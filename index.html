@@ -129,7 +129,7 @@
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         
         <!-- Dashboard Section -->
-        <section id="dashboard-section" class="page-section">
+        <section id="dashboard-section" class="page-section hidden">
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
                 <main class="lg:col-span-2 space-y-8">
                     <div>
@@ -180,7 +180,7 @@
         </section>
 
         <!-- Applications Status Tracker Section -->
-        <section id="applications-section" class="page-section hidden">
+        <section id="applications-section" class="page-section">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Pelacak Status Lamaran</h1>
             <p class="mt-1 text-gray-600 mb-8">Lacak lamaran pekerjaan Anda melalui setiap tahap proses.</p>
 
@@ -607,7 +607,7 @@
                 });
             });
 
-            showSection('applications-section'); // Show dashboard by default
+            showSection('dashboard-section'); // Show dashboard by default
         });
 
     </script>
