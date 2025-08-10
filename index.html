@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutrals with subtle blues and greens -->
-    <!-- Application Structure Plan: Aplikasi ini sekarang menggunakan struktur SPA dengan navigasi bilah atas yang memungkinkan pengguna beralih antar bagian: Dasbor, Lamaran, Obrolan Langsung, dan Pengaturan. Setiap bagian (kecuali Dasbor awal) disembunyikan secara default dan ditampilkan melalui JavaScript saat tautan navigasi yang sesuai diklik. Tata letak utama menggunakan tata letak dasbor dua kolom yang responsif (konten utama dan panel samping) untuk Dasbor, dan tata letak satu/dua kolom yang disesuaikan untuk bagian lainnya. Struktur ini mempromosikan pengalaman pengguna yang terorganisir, intuitif, dan efisien dengan memisahkan konten ke dalam domain yang jelas dan mudah diakses, yang secara logis mewakili fungsionalitas portal pekerjaan. -->
-    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis (HTML/Tailwind). Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript untuk Dasbor. Analisis keterampilan divisualisasikan menggunakan bilah kemajuan HTML/CSS/JS sederhana. Pelacak status lamaran menggunakan struktur garis waktu HTML/CSS/JS. Obrolan disajikan dalam tata letak dua kolom (daftar obrolan & jendela obrolan) menggunakan HTML/Tailwind/JS. Halaman pengaturan menggunakan formulir HTML/Tailwind dengan bidang input untuk profil dan pengaturan. Semua visualisasi dan elemen interaktif diimplementasikan dengan JavaScript murni dan Tailwind CSS, sepenuhnya menghindari SVG, Mermaid JS, Chart.js, dan Plotly.js untuk menjaga kesederhanaan dan performa. -->
+    <!-- Application Structure Plan: Aplikasi ini sekarang menggunakan struktur SPA dengan navigasi bilah atas yang memungkinkan pengguna beralih antar bagian: "Pekerjaan" (Dasbor), "Lamaran" (Pelacak Status Lamaran), "Obrolan Langsung" (Obrolan Dukungan SDM), "Cari Pekerjaan" (Filter Pencarian Pekerjaan). "Profil" (sebelumnya pengaturan) dan ikon "Notifikasi" sekarang menjadi titik masuk terpisah di sisi kanan header, menyederhanakan navigasi utama. Setiap bagian (kecuali Dasbor awal) disembunyikan secara default dan ditampilkan melalui JavaScript saat tautan navigasi yang sesuai diklik. Dasbor mempertahankan tata letak dua kolom responsifnya, dengan bagian ringkasan yang lebih ringkas dan tata letak yang fleksibel secara horizontal. Pelacak Status Lamaran kini menampilkan garis waktu langkah demi langkah yang ditingkatkan dengan tombol tindakan. Obrolan Langsung memiliki tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan diperluas untuk mencakup pengeditan profil terperinci dengan subbagian manajemen keahlian, preferensi notifikasi, dan opsi preferensi bahasa yang baru. Halaman khusus baru untuk Filter Pencarian Pekerjaan dan Notifikasi menyediakan interaksi pengguna yang terfokus. Struktur modular ini mempromosikan navigasi yang intuitif dan pemisahan kekhawatiran yang jelas, meningkatkan kegunaan keseluruhan dengan menyediakan ruang khusus untuk tugas-tugas tertentu. -->
+    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis, kini menggunakan tata letak flexbox yang responsif untuk berjejer horizontal. Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript, mendukung pemfilteran interaktif, menyertakan ikon kategori pekerjaan yang disematkan untuk visual yang menarik, dan tombol "Tampilkan Lainnya" untuk memuat lebih banyak daftar pekerjaan secara bertahap. Analisis Keahlian pada Dasbor dan halaman Perbarui Profil memvisualisasikan tingkat keahlian menggunakan bilah kemajuan HTML/CSS dasar dan manajemen tag interaktif (dengan simulasi penyeretan & pelepasan). Pelacak Status Lamaran menggunakan garis waktu HTML/CSS yang ditingkatkan secara visual dengan langkah-langkah yang berbeda dan tombol tindakan. Obrolan Langsung menggunakan HTML/CSS untuk gelembung obrolan dan tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan menyertakan berbagai input formulir HTML, placeholder unggah file, dan sakelar togol HTML/CSS yang disesuaikan untuk preferensi notifikasi, serta opsi pemilihan bahasa. Halaman Filter Pencarian Pekerjaan yang baru menggunakan bidang input HTML untuk memfilter pekerjaan yang ditampilkan. Halaman Notifikasi menampilkan daftar kartu notifikasi bergaya HTML/CSS. Bagian "Artikel Terkait" baru menampilkan kartu artikel statis bergaya HTML/CSS. Semua elemen interaktif dan visualisasi diimplementasikan menggunakan vanilla JavaScript dan Tailwind CSS, sepenuhnya menghindari pustaka bagan eksternal (Chart.js, Plotly.js), SVG, dan Mermaid JS untuk memastikan aplikasi yang ringan dan berkinerja. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -65,8 +65,8 @@
         }
         .timeline-item {
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 1.5rem;
+            padding-left: 2.5rem; /* Increased padding */
+            margin-bottom: 2rem; /* Increased margin */
         }
         .timeline-item:last-child {
             margin-bottom: 0;
@@ -75,30 +75,92 @@
             position: absolute;
             left: 0;
             top: 0.25rem;
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1.5rem; /* Larger dot */
+            height: 1.5rem; /* Larger dot */
             border-radius: 9999px;
             background-color: #d1d5db;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Larger icon */
             font-weight: bold;
+            box-shadow: 0 0 0 4px #f8f9fa; /* Outer ring effect */
         }
         .timeline-dot.completed {
             background-color: #22c55e;
         }
+        .timeline-dot.active-stage {
+            background-color: #3b82f6; /* Blue for active stage */
+            animation: pulse 1.5s infinite;
+        }
         .timeline-line {
             position: absolute;
-            left: 0.625rem;
-            top: 1.5rem;
+            left: 0.7rem; /* Adjusted for larger dot */
+            top: 1.75rem; /* Adjusted for larger dot */
             bottom: 0;
             width: 2px;
             background-color: #e5e7eb;
         }
         .timeline-item:last-child .timeline-line {
             display: none;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 38px;
+            height: 22px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 22px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+        input:checked + .slider:before {
+            transform: translateX(16px);
+        }
+        .drag-area {
+            border: 2px dashed #d1d5db;
+            background-color: #f9fafb;
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .drag-area.hover {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
     </style>
 </head>
@@ -114,22 +176,22 @@
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium active" data-section="dashboard-section">Pekerjaan</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="applications-section">Lamaran</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="livechat-section">Obrolan Langsung</button>
-                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="settings-section">Pengaturan</button>
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="search-filter-section">Cari Pekerjaan</button>
             </nav>
             <div class="flex items-center gap-4">
-                <span class="text-2xl text-gray-600">🔔</span>
-                <div class="flex items-center gap-2 cursor-pointer">
+                <button class="nav-item text-2xl text-gray-600 hover:text-blue-600 p-2 rounded-full" data-section="notifications-section">🔔</button>
+                <button class="nav-item flex items-center gap-2 cursor-pointer p-2 rounded-full hover:bg-gray-100" data-section="settings-section">
                     <img src="https://placehold.co/32x32/cccccc/white?text=👨‍💻" alt="Profile" class="rounded-full w-8 h-8">
                     <span class="text-gray-700 font-medium hidden sm:block">Profil</span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         
-        <!-- Dashboard Section -->
-        <section id="dashboard-section" class="page-section hidden">
+        <!-- Dashboard Section (Pekerjaan) -->
+        <section id="dashboard-section" class="page-section">
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
                 <main class="lg:col-span-2 space-y-8">
                     <div>
@@ -138,8 +200,8 @@
                     </div>
 
                     <section>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                            <div id="summary-cards"></div>
+                        <div class="flex flex-wrap justify-between items-stretch gap-4">
+                            <div id="summary-cards" class="flex flex-wrap justify-center sm:justify-between w-full gap-4"></div>
                         </div>
                     </section>
                     
@@ -157,6 +219,17 @@
                         </div>
                         <div id="job-listings" class="space-y-4">
                         </div>
+                        <div id="show-more-jobs-container" class="text-center mt-6">
+                            <button id="show-more-jobs-btn" class="px-6 py-3 font-bold rounded-lg btn-secondary">Tampilkan Lainnya</button>
+                        </div>
+                    </section>
+
+                    <section id="related-articles-section">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Artikel Terkait</h2>
+                        <p class="text-gray-600 mb-6">Jelajahi artikel tentang tren industri, pengembangan karier, dan keahlian.</p>
+                        <div id="articles-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Articles will be rendered here by JavaScript -->
+                        </div>
                     </section>
                 </main>
 
@@ -171,7 +244,7 @@
                         <div id="skills-analysis" class="space-y-5">
                         </div>
 
-                        <button class="w-full mt-6 px-4 py-3 font-bold rounded-lg btn-primary transition-transform duration-200 hover:scale-105">
+                        <button id="update-skills-btn" class="w-full mt-6 px-4 py-3 font-bold rounded-lg btn-primary transition-transform duration-200 hover:scale-105">
                             Perbarui Keahlian
                         </button>
                     </div>
@@ -179,7 +252,7 @@
             </div>
         </section>
 
-        <!-- Applications Status Tracker Section -->
+        <!-- Applications Status Tracker Section (Lamaran) -->
         <section id="applications-section" class="page-section hidden">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Pelacak Status Lamaran</h1>
             <p class="mt-1 text-gray-600 mb-8">Lacak lamaran pekerjaan Anda melalui setiap tahap proses.</p>
@@ -190,7 +263,7 @@
 
                 <div class="flex items-center justify-between mb-4 text-sm text-gray-500">
                     <span>Progres Lamaran</span>
-                    <span>1 dari 4</span>
+                    <span>3 dari 4</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
                     <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%;"></div>
@@ -201,7 +274,7 @@
                         <div class="timeline-dot completed">✔️</div>
                         <div class="timeline-line"></div>
                         <div class="font-medium text-lg text-gray-900">Lamaran Terkirim</div>
-                        <p class="text-sm text-gray-600">Lamaran telah berhasil dikirim dan diterima oleh tim perekrut.</p>
+                        <p class="text-sm text-gray-600">Lamaran telah berhasil dikirim dan diterima oleh tim perekrut. Pastikan semua dokumen terlampir.</p>
                         <span class="text-xs text-gray-500 block mt-1">20 Mar, 2024</span>
                     </div>
 
@@ -209,24 +282,31 @@
                         <div class="timeline-dot completed">✔️</div>
                         <div class="timeline-line"></div>
                         <div class="font-medium text-lg text-gray-900">Dalam Peninjauan</div>
-                        <p class="text-sm text-gray-600">Tim perekrut sedang meninjau lamaran dan kualifikasi Anda.</p>
+                        <p class="text-sm text-gray-600">Tim perekrut sedang meninjau lamaran dan kualifikasi Anda. Anda dapat mengharapkan umpan balik dalam 3-5 hari kerja.</p>
                         <span class="text-xs text-gray-500 block mt-1">27 Mar, 2024</span>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-dot">⏳</div>
+                        <div class="timeline-dot active-stage">⏳</div>
                         <div class="timeline-line"></div>
                         <div class="font-medium text-lg text-gray-900">Tahap Wawancara</div>
-                        <p class="text-sm text-gray-600">Jika lamaran Anda lolos tinjauan awal, Anda akan diundang untuk wawancara.</p>
-                        <span class="text-xs text-gray-500 block mt-1">Menunggu</span>
+                        <p class="text-sm text-gray-600">Anda telah diundang untuk wawancara! Silakan periksa email Anda untuk rincian lebih lanjut. Jadwalkan wawancara Anda paling lambat 5 April.</p>
+                        <span class="text-xs text-gray-500 block mt-1">Menunggu Penjadwalan</span>
+                        <div class="mt-3 flex gap-2">
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary">Jadwalkan Wawancara</button>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Minta Umpan Balik</button>
+                        </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-dot">⚪</div>
                         <div class="font-medium text-lg text-gray-900">Keputusan Akhir</div>
-                        <p class="text-sm text-gray-600">Setelah proses wawancara, Anda akan menerima keputusan akhir mengenai lamaran Anda.</p>
+                        <p class="text-sm text-gray-600">Setelah proses wawancara, Anda akan menerima keputusan akhir mengenai lamaran Anda. Ini mungkin termasuk tawaran atau penolakan.</p>
                         <span class="text-xs text-gray-500 block mt-1">Menunggu</span>
                     </div>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button class="px-4 py-2 text-sm font-semibold rounded-lg text-red-600 border border-red-200 hover:bg-red-50">Tarik Lamaran</button>
                 </div>
             </div>
 
@@ -249,8 +329,8 @@
             </div>
         </section>
 
-        <!-- Live Chat Section -->
-        <section id="livechat-section" class="page-section">
+        <!-- Live Chat Section (Obrolan Langsung) -->
+        <section id="livechat-section" class="page-section hidden">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Obrolan Dukungan SDM</h1>
             <p class="mt-1 text-gray-600 mb-8">Percakapan aktif.</p>
 
@@ -338,7 +418,7 @@
             </div>
         </section>
 
-        <!-- Account Settings Section -->
+        <!-- Account Settings Section (Pengaturan) -->
         <section id="settings-section" class="page-section hidden">
             <div class="flex justify-between items-center mb-6">
                 <div>
@@ -351,72 +431,326 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-1">
                     <div class="flex flex-col space-y-2">
-                        <button class="px-4 py-2 text-left font-semibold rounded-lg bg-blue-500 text-white">Edit Profil</button>
-                        <button class="px-4 py-2 text-left font-semibold rounded-lg text-gray-700 hover:bg-gray-100">Pengaturan</button>
+                        <button class="settings-nav-item px-4 py-2 text-left font-semibold rounded-lg bg-blue-500 text-white" data-setting-section="edit-profile-sub">Edit Profil</button>
+                        <button class="settings-nav-item px-4 py-2 text-left font-semibold rounded-lg text-gray-700 hover:bg-gray-100" data-setting-section="notification-sub">Preferensi Notifikasi</button>
+                        <button class="settings-nav-item px-4 py-2 text-left font-semibold rounded-lg text-gray-700 hover:bg-gray-100" data-setting-section="account-management-sub">Manajemen Akun</button>
                     </div>
                 </div>
                 <div class="md:col-span-3 card p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Edit Profil</h2>
-                    <p class="text-gray-600 mb-6">Perbarui informasi pribadi dan preferensi Anda.</p>
+                    <!-- Edit Profile Sub-section -->
+                    <div id="edit-profile-sub" class="setting-sub-section">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6">Edit Profil</h2>
+                        <p class="text-gray-600 mb-6">Perbarui informasi pribadi dan preferensi Anda.</p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <p class="font-semibold text-gray-700 mb-2">Foto Profil</p>
-                            <div class="flex items-center gap-4">
-                                <img src="https://placehold.co/80x80/cccccc/white?text=👨‍💻" alt="Profile Photo" class="rounded-full w-20 h-20 border border-gray-200">
-                                <div class="flex gap-2">
-                                    <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Ubah Foto</button>
-                                    <button class="px-4 py-2 text-sm font-semibold rounded-lg text-red-600 border border-red-200 hover:bg-red-50">Hapus</button>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Foto Profil</p>
+                                <div class="flex items-center gap-4">
+                                    <img src="https://placehold.co/80x80/cccccc/white?text=👨‍💻" alt="Profile Photo" class="rounded-full w-20 h-20 border border-gray-200">
+                                    <div class="flex gap-2">
+                                        <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Ubah Foto</button>
+                                        <button class="px-4 py-2 text-sm font-semibold rounded-lg text-red-600 border border-red-200 hover:bg-red-50">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">CV</p>
+                                <div class="flex items-center gap-4 bg-gray-50 border border-gray-200 p-3 rounded-lg">
+                                    <span class="text-lg">📄</span>
+                                    <span class="flex-grow text-gray-800 font-medium">John_Doe_CV.pdf</span>
+                                    <button class="px-3 py-1 text-sm font-semibold rounded-lg btn-secondary">Edit</button>
+                                    <button class="px-3 py-1 text-sm font-semibold rounded-lg btn-primary">Lihat</button>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p class="font-semibold text-gray-700 mb-2">CV</p>
-                            <div class="flex items-center gap-4 bg-gray-50 border border-gray-200 p-3 rounded-lg">
-                                <span class="text-lg">📄</span>
-                                <span class="flex-grow text-gray-800 font-medium">John_Doe_CV.pdf</span>
-                                <button class="px-3 py-1 text-sm font-semibold rounded-lg btn-secondary">Edit</button>
-                                <button class="px-3 py-1 text-sm font-semibold rounded-lg btn-primary">Lihat</button>
+
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Informasi Pribadi</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Depan</label>
+                                <input type="text" id="first-name" value="John" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Belakang</label>
+                                <input type="text" id="last-name" value="Doe" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" value="john.doe@email.com" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telepon</label>
+                                <input type="tel" id="phone" value="+62 812-3456-7890" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="bio" class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                                <textarea id="bio" rows="3" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">Jelaskan tentang pengalaman kerja, latar belakang pendidikan, dll.</textarea>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Keahlian</h3>
+                        <div id="skills-input-area" class="flex flex-wrap gap-2 mb-4 p-4 border border-gray-300 rounded-lg drag-area">
+                            <span class="text-gray-500 w-full text-center">Seret & lepas keahlian di sini atau ketik di bawah</span>
+                            <div id="selected-skills" class="flex flex-wrap gap-2 w-full justify-center">
+                                <span class="tag bg-blue-100 text-blue-800 flex items-center gap-1" draggable="true" data-skill="React">React <button class="text-blue-800 ml-1 remove-skill">✖</button></span>
+                                <span class="tag bg-blue-100 text-blue-800 flex items-center gap-1" draggable="true" data-skill="Node.js">Node.js <button class="text-blue-800 ml-1 remove-skill">✖</button></span>
+                            </div>
+                        </div>
+                        <div class="relative mb-6">
+                            <input type="text" id="skill-input" placeholder="Tambah keahlian..." class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <div id="skill-suggestions" class="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 hidden"></div>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Portofolio</h3>
+                        <div class="border border-dashed border-gray-300 rounded-lg p-6 text-center text-gray-500">
+                            <span class="text-4xl block mb-2">☁️</span>
+                            <p class="mb-3">Seret & lepas dokumen Anda di sini, atau</p>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Pilih Dokumen</button>
+                        </div>
+                    </div>
+
+                    <!-- Notification Preferences Sub-section -->
+                    <div id="notification-sub" class="setting-sub-section hidden">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6">Preferensi Notifikasi</h2>
+                        <p class="text-gray-600 mb-6">Sesuaikan bagaimana Anda menerima notifikasi.</p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Pembaruan Status Lamaran</h4>
+                                    <p class="text-sm text-gray-600">Dapatkan pemberitahuan tentang perubahan status lamaran Anda.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Rekomendasi Pekerjaan Baru</h4>
+                                    <p class="text-sm text-gray-600">Terima notifikasi untuk pekerjaan yang baru diposting yang cocok dengan profil Anda.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Pesan Obrolan Langsung</h4>
+                                    <p class="text-sm text-gray-600">Dapatkan pemberitahuan saat Anda menerima pesan obrolan baru.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">Informasi Pribadi</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Depan</label>
-                            <input type="text" id="first-name" value="John" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Belakang</label>
-                            <input type="text" id="last-name" value="Doe" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email" value="john.doe@email.com" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telepon</label>
-                            <input type="tel" id="phone" value="+62 812-3456-7890" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="bio" class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
-                            <textarea id="bio" rows="3" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">Jelaskan tentang pengalaman kerja, latar belakang pendidikan, dll.</textarea>
+                    <!-- Account Management Sub-section -->
+                    <div id="account-management-sub" class="setting-sub-section hidden">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6">Manajemen Akun</h2>
+                        <p class="text-gray-600 mb-6">Kelola pengaturan keamanan dan data akun Anda.</p>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Ubah Kata Sandi</h4>
+                                <p class="text-sm text-gray-600 mb-2">Jaga keamanan akun Anda dengan kata sandi yang kuat.</p>
+                                <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Ubah Kata Sandi</button>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Verifikasi Dua Langkah</h4>
+                                <p class="text-sm text-gray-600 mb-2">Tambahkan lapisan keamanan ekstra ke akun Anda.</p>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Preferensi Bahasa</h4>
+                                <p class="text-sm text-gray-600 mb-2">Pilih bahasa pilihan Anda untuk antarmuka.</p>
+                                <select id="language-preference" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="id">Bahasa Indonesia</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-red-700">Hapus Akun</h4>
+                                <p class="text-sm text-gray-600 mb-2">Ini akan menghapus akun Anda dan semua data terkait secara permanen.</p>
+                                <button class="px-4 py-2 text-sm font-semibold rounded-lg text-red-600 border border-red-200 hover:bg-red-50">Hapus Akun</button>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">Keahlian</h3>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="tag bg-blue-100 text-blue-800 flex items-center gap-1">React <button class="text-blue-800 ml-1">✖</button></span>
-                        <span class="tag bg-blue-100 text-blue-800 flex items-center gap-1">Node.js <button class="text-blue-800 ml-1">✖</button></span>
-                        <input type="text" placeholder="Tambah keahlian..." class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+        <!-- Job Application Page -->
+        <section id="job-application-section" class="page-section hidden">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Lamar Pekerjaan: <span id="application-job-title"></span></h1>
+            <p class="mt-1 text-gray-600 mb-8">Lengkapi langkah-langkah di bawah ini untuk mengirimkan lamaran Anda.</p>
+
+            <div class="card p-6">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="flex flex-col items-center flex-grow">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">1</div>
+                        <span class="text-sm text-gray-700 mt-2 text-center">Informasi Dasar</span>
                     </div>
+                    <div class="flex-grow h-0.5 bg-gray-200"></div>
+                    <div class="flex flex-col items-center flex-grow">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-700 flex items-center justify-center font-bold">2</div>
+                        <span class="text-sm text-gray-700 mt-2 text-center">Dokumen</span>
+                    </div>
+                    <div class="flex-grow h-0.5 bg-gray-200"></div>
+                    <div class="flex flex-col items-center flex-grow">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-700 flex items-center justify-center font-bold">3</div>
+                        <span class="text-sm text-gray-700 mt-2 text-center">Tinjau & Kirim</span>
+                    </div>
+                </div>
 
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">Portofolio</h3>
-                    <div class="border border-dashed border-gray-300 rounded-lg p-6 text-center text-gray-500">
-                        <span class="text-4xl block mb-2">☁️</span>
-                        <p class="mb-3">Seret & lepas dokumen Anda di sini, atau</p>
-                        <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Pilih Dokumen</button>
+                <div id="application-step-1">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Langkah 1: Informasi Dasar</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="app-first-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Depan</label>
+                            <input type="text" id="app-first-name" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" value="John">
+                        </div>
+                        <div>
+                            <label for="app-last-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Belakang</label>
+                            <input type="text" id="app-last-name" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" value="Doe">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="app-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="app-email" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" value="john.doe@email.com">
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="nextApplicationStep(2)">Lanjutkan</button>
+                    </div>
+                </div>
+
+                <div id="application-step-2" class="hidden">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Langkah 2: Unggah Dokumen</h2>
+                    <div class="mb-6">
+                        <label for="resume-upload" class="block text-sm font-medium text-gray-700 mb-1">Resume/CV (PDF)</label>
+                        <div class="drag-area p-10 flex flex-col items-center justify-center">
+                            <span class="text-4xl block mb-2">📄</span>
+                            <p class="mb-3">Seret & lepas resume Anda di sini, atau</p>
+                            <input type="file" id="resume-upload" accept=".pdf" class="hidden">
+                            <label for="resume-upload" class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary cursor-pointer">Pilih File</label>
+                            <p id="resume-file-name" class="mt-2 text-sm text-gray-500"></p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="cover-letter-upload" class="block text-sm font-medium text-gray-700 mb-1">Surat Lamaran (Opsional, PDF)</label>
+                        <div class="drag-area p-10 flex flex-col items-center justify-center">
+                            <span class="text-4xl block mb-2">📝</span>
+                            <p class="mb-3">Seret & lepas surat lamaran di sini, atau</p>
+                            <input type="file" id="cover-letter-upload" accept=".pdf" class="hidden">
+                            <label for="cover-letter-upload" class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary cursor-pointer">Pilih File</label>
+                            <p id="cover-letter-file-name" class="mt-2 text-sm text-gray-500"></p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="px-5 py-2 font-bold rounded-lg btn-secondary" onclick="nextApplicationStep(1)">Kembali</button>
+                        <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="nextApplicationStep(3)">Lanjutkan</button>
+                    </div>
+                </div>
+
+                <div id="application-step-3" class="hidden">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Langkah 3: Tinjau & Kirim</h2>
+                    <div class="space-y-4 mb-6">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h3 class="font-semibold text-gray-800">Informasi Pribadi</h3>
+                            <p class="text-sm text-gray-700" id="review-name">Nama: John Doe</p>
+                            <p class="text-sm text-gray-700" id="review-email">Email: john.doe@email.com</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h3 class="font-semibold text-gray-800">Dokumen</h3>
+                            <p class="text-sm text-gray-700" id="review-resume">Resume: Belum Diunggah</p>
+                            <p class="text-sm text-gray-700" id="review-cover-letter">Surat Lamaran: Belum Diunggah</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Dengan mengklik "Kirim Lamaran", Anda mengonfirmasi bahwa semua informasi yang diberikan akurat dan lengkap.</p>
+                    <div class="flex justify-between">
+                        <button class="px-5 py-2 font-bold rounded-lg btn-secondary" onclick="nextApplicationStep(2)">Kembali</button>
+                        <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="submitApplication()">Kirim Lamaran</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Search Filters Page (Cari Pekerjaan) -->
+        <section id="search-filter-section" class="page-section hidden">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Cari Pekerjaan</h1>
+            <p class="mt-1 text-gray-600 mb-8">Temukan pekerjaan yang sempurna untuk Anda menggunakan filter pencarian.</p>
+
+            <div class="card p-6 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="keyword-search" class="block text-sm font-medium text-gray-700 mb-1">Kata Kunci (Judul, Keahlian)</label>
+                        <input type="text" id="keyword-search" placeholder="Misalnya: Product Manager, React, Data Analyst" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="company-search" class="block text-sm font-medium text-gray-700 mb-1">Perusahaan</label>
+                        <input type="text" id="company-search" placeholder="Misalnya: Google, TechCorp" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="location-search" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                        <input type="text" id="location-search" placeholder="Misalnya: Jakarta, Remote, New York" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="job-type-filter" class="block text-sm font-medium text-gray-700 mb-1">Tipe Pekerjaan</label>
+                        <select id="job-type-filter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <option value="all">Semua Tipe</option>
+                            <option value="full-time">Penuh Waktu</option>
+                            <option value="part-time">Paruh Waktu</option>
+                            <option value="contract">Kontrak</option>
+                            <option value="internship">Magang</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-6 gap-2">
+                    <button class="px-5 py-2 font-bold rounded-lg btn-secondary" onclick="clearSearchFilters()">Bersihkan Filter</button>
+                    <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="applySearchFilters()">Cari Pekerjaan</button>
+                </div>
+            </div>
+
+            <div id="search-results" class="space-y-4">
+                <div class="card p-6 text-center text-gray-500">Gunakan filter di atas untuk menemukan pekerjaan.</div>
+            </div>
+        </section>
+
+        <!-- Notifications Page -->
+        <section id="notifications-section" class="page-section hidden">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Notifikasi</h1>
+            <p class="mt-1 text-gray-600 mb-8">Pembaruan penting dan peluang baru.</p>
+
+            <div id="notification-list" class="space-y-4">
+                <div class="card p-4 flex items-start gap-4 hover:bg-gray-50 cursor-pointer">
+                    <div class="w-3 h-3 rounded-full bg-blue-500 mt-1"></div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Selamat! Lamaran Anda untuk Senior Product Manager telah berhasil dikirim.</h3>
+                        <p class="text-sm text-gray-600">Lamaran Anda untuk TechCorp Inc. telah diterima. Anda dapat melacak progresnya di halaman Lamaran.</p>
+                        <span class="text-xs text-gray-400 mt-1 block">1 jam yang lalu</span>
+                    </div>
+                </div>
+                <div class="card p-4 flex items-start gap-4 hover:bg-gray-50 cursor-pointer">
+                    <div class="w-3 h-3 rounded-full bg-blue-500 mt-1"></div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Pekerjaan Baru: Data Scientist di QuantumLeap AI</h3>
+                        <p class="text-sm text-gray-600">Peluang baru yang cocok dengan keahlian Anda telah diposting. Periksa rekomendasi Anda!</p>
+                        <span class="text-xs text-gray-400 mt-1 block">3 jam yang lalu</span>
+                    </div>
+                </div>
+                <div class="card p-4 flex items-start gap-4 bg-gray-100 cursor-pointer">
+                    <div class="w-3 h-3 rounded-full bg-gray-400 mt-1"></div>
+                    <div>
+                        <h3 class="font-semibold text-gray-700">Peringatan: Verifikasi Dua Langkah dinonaktifkan</h3>
+                        <p class="text-sm text-gray-500">Verifikasi dua langkah untuk akun Anda saat ini dinonaktifkan. Aktifkan untuk keamanan tambahan.</p>
+                        <span class="text-xs text-gray-400 mt-1 block">Kemarin</span>
                     </div>
                 </div>
             </div>
@@ -444,20 +778,22 @@
                 match: 91,
                 tags: ['Product Strategy', 'Team Leadership', 'Data Analysis'],
                 insight: '↗️ Peran jenjang berikutnya: +2 tahun pengalaman pertumbuhan',
-                type: 'next-level'
+                type: 'next-level',
+                category: 'product'
             },
             {
                 id: 2,
                 title: 'Lead UX Designer',
                 company: 'Design Studio Pro',
-                logo: '🎨',
+                logo: '�',
                 location: 'New York, NY ∙ Hybrid',
                 salary: '$120k-$150k',
                 posted: '1 minggu yang lalu',
                 match: 88,
                 tags: ['Design Systems', 'User Research', 'Mentoring'],
                 insight: '↔️ Perluasan keahlian: Peluang kepemimpinan desain',
-                type: 'similar'
+                type: 'similar',
+                category: 'design'
             },
             {
                 id: 3,
@@ -470,7 +806,8 @@
                 match: 92,
                 tags: ['Project Management', 'Technical Strategy', 'Cross-functional'],
                 insight: '⚡️ Potensi pertumbuhan tinggi: Fokus teknologi baru',
-                type: 'next-level'
+                type: 'next-level',
+                category: 'management'
             },
             {
                 id: 4,
@@ -483,7 +820,36 @@
                 match: 85,
                 tags: ['Machine Learning', 'Python', 'SQL'],
                 insight: '↔️ Perluasan keahlian: Kesempatan di bidang AI generatif',
-                type: 'similar'
+                type: 'similar',
+                category: 'data'
+            },
+            {
+                id: 5,
+                title: 'DevOps Engineer',
+                company: 'CloudBridge Solutions',
+                logo: '☁️',
+                location: 'Remote',
+                salary: '$130k-$160k',
+                posted: '4 hari yang lalu',
+                match: 89,
+                tags: ['Cloud Computing', 'CI/CD', 'Kubernetes'],
+                insight: '🚀 Jalur karier yang berkembang pesat di infrastruktur',
+                type: 'next-level',
+                category: 'management'
+            },
+            {
+                id: 6,
+                title: 'Content Strategist',
+                company: 'BrandFlow Marketing',
+                logo: '✍️',
+                location: 'Los Angeles, CA',
+                salary: '$90k-$110k',
+                posted: '1 hari yang lalu',
+                match: 75,
+                tags: ['Content Marketing', 'SEO', 'Copywriting'],
+                insight: '💡 Tingkatkan pengaruh merek Anda dengan peran baru ini',
+                type: 'similar',
+                category: 'product'
             }
         ];
 
@@ -493,10 +859,39 @@
             { name: 'Leadership', level: 3, maxLevel: 5, levelName: 'Menengah' }
         ];
 
+        const availableSkills = ['React', 'Node.js', 'Python', 'SQL', 'Figma', 'User Research', 'Project Management', 'Cloud Computing', 'Machine Learning', 'AI', 'SEO', 'Copywriting', 'CI/CD', 'Kubernetes'];
+
+        const articlesData = [
+            {
+                id: 1,
+                title: '5 Keahlian Teratas yang Dicari Perekrut di Tahun 2025',
+                description: 'Pelajari tentang keahlian penting yang dapat meningkatkan peluang kerja Anda tahun ini.',
+                image: '💡',
+                link: '#'
+            },
+            {
+                id: 2,
+                title: 'Masa Depan Pekerjaan Jarak Jauh: Tren dan Tantangan',
+                description: 'Jelajahi lanskap pekerjaan jarak jauh yang terus berkembang dan apa yang diharapkan.',
+                image: '🏠',
+                link: '#'
+            },
+            {
+                id: 3,
+                title: 'Menguasai Wawancara Perilaku: Kiat dan Trik',
+                description: 'Persiapkan diri Anda untuk wawancara dan tunjukkan kompetensi Anda secara efektif.',
+                image: '🗣️',
+                link: '#'
+            }
+        ];
+
+        const INITIAL_JOB_LIMIT = 3;
+        let currentJobLimit = INITIAL_JOB_LIMIT;
+
         function renderSummaryCards() {
             const container = document.getElementById('summary-cards');
             container.innerHTML = summaryData.map(item => `
-                <div class="card p-4 flex flex-col justify-between">
+                <div class="card p-4 flex-1 min-w-[150px] flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3">
                             <span class="text-2xl">${item.icon}</span>
@@ -508,23 +903,51 @@
             `).join('');
         }
 
-        function renderJobs(filter = 'all') {
-            const container = document.getElementById('job-listings');
-            const filteredJobs = filter === 'all' ? jobsData : jobsData.filter(job => job.type === filter);
+        function getCategoryIcon(category) {
+            switch(category) {
+                case 'product': return '📦';
+                case 'design': return '🖌️';
+                case 'management': return '📈';
+                case 'data': return '📊';
+                default: return '💼';
+            }
+        }
 
-            if (filteredJobs.length === 0) {
+        function renderJobs(filter = 'all', searchTerm = '') {
+            const container = document.getElementById('job-listings');
+            const showMoreBtn = document.getElementById('show-more-jobs-btn');
+            let filteredJobs = jobsData;
+
+            if (filter !== 'all') {
+                filteredJobs = filteredJobs.filter(job => job.type === filter);
+            }
+
+            if (searchTerm) {
+                const lowerCaseSearchTerm = searchTerm.toLowerCase();
+                filteredJobs = filteredJobs.filter(job => 
+                    job.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    job.company.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    job.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                    job.location.toLowerCase().includes(lowerCaseSearchTerm)
+                );
+            }
+
+            const jobsToShow = filteredJobs.slice(0, currentJobLimit);
+
+            if (jobsToShow.length === 0) {
                 container.innerHTML = `<div class="card p-6 text-center text-gray-500">Tidak ada pekerjaan yang cocok dengan filter ini.</div>`;
+                showMoreBtn.classList.add('hidden');
                 return;
             }
 
-            container.innerHTML = filteredJobs.map(job => `
-                <div class="card p-5">
+            container.innerHTML = jobsToShow.map(job => `
+                <div class="card p-5 group">
                     <div class="flex flex-col sm:flex-row gap-4">
                         <div class="text-2xl h-12 w-12 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">${job.logo}</div>
                         <div class="flex-grow">
                             <div class="flex flex-wrap justify-between items-start gap-2">
                                 <div>
-                                    <h3 class="text-lg font-bold text-gray-900 hover:text-blue-600 cursor-pointer">${job.title}</h3>
+                                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer">${job.title}</h3>
                                     <p class="text-sm text-gray-600">${job.company}</p>
                                 </div>
                                 <div class="match-tag px-2.5 py-1 rounded-full text-sm">${job.match}% Cocok</div>
@@ -537,20 +960,44 @@
                                 <span>${job.posted}</span>
                             </div>
                             <div class="mt-3 flex flex-wrap gap-2">
-                                ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded">${tag}</span>`).join('')}
+                                ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded flex items-center gap-1">${getCategoryIcon(job.category)} ${tag}</span>`).join('')}
                             </div>
                         </div>
                     </div>
                     <div class="mt-4 pl-0 sm:pl-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                          <p class="text-sm text-green-700 bg-green-50 p-2 rounded-md">${job.insight}</p>
                          <div class="flex gap-2 self-end sm:self-center">
-                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Simpan</button>
-                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary">Lamar</button>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
                         </div>
                     </div>
                 </div>
             `).join('');
+
+            if (currentJobLimit >= filteredJobs.length) {
+                showMoreBtn.classList.add('hidden');
+            } else {
+                showMoreBtn.classList.remove('hidden');
+            }
+
+            document.querySelectorAll('#job-listings .btn-primary').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const jobId = event.target.dataset.jobId;
+                    const job = jobsData.find(j => j.id == jobId);
+                    if (job) {
+                        document.getElementById('application-job-title').textContent = job.title;
+                        showSection('job-application-section');
+                        nextApplicationStep(1); // Reset to step 1
+                    }
+                });
+            });
         }
+
+        function showMoreJobs() {
+            currentJobLimit += 3; // Load 3 more jobs
+            renderJobs();
+        }
+
 
         function renderSkills() {
             const container = document.getElementById('skills-analysis');
@@ -567,6 +1014,19 @@
             `).join('');
         }
 
+        function renderArticles() {
+            const container = document.getElementById('articles-list');
+            container.innerHTML = articlesData.map(article => `
+                <div class="card p-4 flex flex-col">
+                    <div class="text-3xl mb-3">${article.image}</div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">${article.title}</h3>
+                    <p class="text-sm text-gray-600 flex-grow">${article.description}</p>
+                    <a href="${article.link}" class="text-blue-600 hover:underline mt-4 text-sm font-medium self-start">Baca Selengkapnya →</a>
+                </div>
+            `).join('');
+        }
+
+
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
@@ -576,13 +1036,288 @@
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-            document.querySelector(`.nav-item[data-section="${sectionId}"]`).classList.add('active');
+            const activeNavItem = document.querySelector(`.nav-item[data-section="${sectionId}"]`);
+            if (activeNavItem) {
+                activeNavItem.classList.add('active');
+            }
         }
-        
+
+        // Application Page Logic
+        let currentApplicationStep = 1;
+        function nextApplicationStep(step) {
+            document.querySelectorAll('[id^="application-step-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`application-step-${step}`).classList.remove('hidden');
+
+            document.querySelectorAll('#job-application-section .flex-col.flex-grow > div').forEach((dot, index) => {
+                const dotElement = dot;
+                dotElement.classList.remove('bg-blue-500', 'bg-gray-300');
+                dotElement.classList.remove('text-white', 'text-gray-700');
+                dotElement.classList.add('bg-gray-300', 'text-gray-700');
+
+                if (index < step) {
+                    dotElement.classList.remove('bg-gray-300', 'text-gray-700');
+                    dotElement.classList.add('bg-blue-500', 'text-white');
+                }
+            });
+
+            currentApplicationStep = step;
+
+            if (step === 3) {
+                document.getElementById('review-name').textContent = `Nama: ${document.getElementById('app-first-name').value} ${document.getElementById('app-last-name').value}`;
+                document.getElementById('review-email').textContent = `Email: ${document.getElementById('app-email').value}`;
+                document.getElementById('review-resume').textContent = `Resume: ${document.getElementById('resume-file-name').textContent || 'Belum Diunggah'}`;
+                document.getElementById('review-cover-letter').textContent = `Surat Lamaran: ${document.getElementById('cover-letter-file-name').textContent || 'Belum Diunggah'}`;
+            }
+        }
+
+        function submitApplication() {
+            alert('Lamaran berhasil dikirim!'); // Using alert for simplicity as per requirements for dialogs.
+            showSection('applications-section'); // Go to applications tracker after submitting
+        }
+
+        // File upload handling for Application Page
+        function setupFileUpload(inputId, fileNameId) {
+            const input = document.getElementById(inputId);
+            const fileNameDisplay = document.getElementById(fileNameId);
+            const dragArea = input.closest('.drag-area');
+
+            input.addEventListener('change', () => {
+                if (input.files.length > 0) {
+                    fileNameDisplay.textContent = input.files[0].name;
+                } else {
+                    fileNameDisplay.textContent = '';
+                }
+            });
+
+            if (dragArea) {
+                dragArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dragArea.classList.add('hover');
+                });
+                dragArea.addEventListener('dragleave', () => {
+                    dragArea.classList.remove('hover');
+                });
+                dragArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dragArea.classList.remove('hover');
+                    if (e.dataTransfer.files.length > 0) {
+                        input.files = e.dataTransfer.files;
+                        fileNameDisplay.textContent = input.files[0].name;
+                    }
+                });
+            }
+        }
+
+        // Settings Page Sub-navigation
+        function showSettingSubSection(subSectionId) {
+            document.querySelectorAll('.setting-sub-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(subSectionId).classList.remove('hidden');
+
+            document.querySelectorAll('.settings-nav-item').forEach(item => {
+                item.classList.remove('bg-blue-500', 'text-white');
+                item.classList.add('text-gray-700', 'hover:bg-gray-100');
+            });
+            const activeSettingItem = document.querySelector(`.settings-nav-item[data-setting-section="${subSectionId}"]`);
+            if (activeSettingItem) {
+                activeSettingItem.classList.add('bg-blue-500', 'text-white');
+                activeSettingItem.classList.remove('text-gray-700', 'hover:bg-gray-100');
+            }
+        }
+
+        // Skill Management (Settings Page)
+        function setupSkillManagement() {
+            const skillInput = document.getElementById('skill-input');
+            const skillSuggestions = document.getElementById('skill-suggestions');
+            const selectedSkillsContainer = document.getElementById('selected-skills');
+            const skillsDragArea = document.getElementById('skills-input-area');
+
+            function addSkill(skillName) {
+                if (!Array.from(selectedSkillsContainer.children).some(el => el.dataset.skill === skillName)) {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'tag bg-blue-100 text-blue-800 flex items-center gap-1';
+                    skillTag.setAttribute('draggable', 'true');
+                    skillTag.dataset.skill = skillName;
+                    skillTag.innerHTML = `${skillName} <button class="text-blue-800 ml-1 remove-skill">✖</button>`;
+                    selectedSkillsContainer.appendChild(skillTag);
+                }
+                skillInput.value = '';
+                skillSuggestions.classList.add('hidden');
+            }
+
+            function removeSkill(skillName) {
+                const skillTag = selectedSkillsContainer.querySelector(`[data-skill="${skillName}"]`);
+                if (skillTag) {
+                    skillTag.remove();
+                }
+            }
+
+            skillInput.addEventListener('input', () => {
+                const query = skillInput.value.toLowerCase();
+                skillSuggestions.innerHTML = '';
+                if (query.length > 0) {
+                    const filtered = availableSkills.filter(skill => 
+                        skill.toLowerCase().includes(query) && 
+                        !Array.from(selectedSkillsContainer.children).some(el => el.dataset.skill.toLowerCase() === skill.toLowerCase())
+                    );
+                    if (filtered.length > 0) {
+                        filtered.forEach(skill => {
+                            const div = document.createElement('div');
+                            div.className = 'p-2 cursor-pointer hover:bg-gray-100';
+                            div.textContent = skill;
+                            div.addEventListener('click', () => addSkill(skill));
+                            skillSuggestions.appendChild(div);
+                        });
+                        skillSuggestions.classList.remove('hidden');
+                    } else {
+                        skillSuggestions.classList.add('hidden');
+                    }
+                } else {
+                    skillSuggestions.classList.add('hidden');
+                }
+            });
+
+            skillInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && skillInput.value.trim() !== '') {
+                    addSkill(skillInput.value.trim());
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!skillSuggestions.contains(e.target) && e.target !== skillInput) {
+                    skillSuggestions.classList.add('hidden');
+                }
+                if (e.target.classList.contains('remove-skill')) {
+                    removeSkill(e.target.closest('.tag').dataset.skill);
+                }
+            });
+
+            // Drag and drop for skills
+            let draggedSkill = null;
+            selectedSkillsContainer.addEventListener('dragstart', (e) => {
+                draggedSkill = e.target;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', e.target.dataset.skill);
+                setTimeout(() => e.target.classList.add('hidden'), 0);
+            });
+
+            skillsDragArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                skillsDragArea.classList.add('hover');
+            });
+
+            skillsDragArea.addEventListener('dragleave', () => {
+                skillsDragArea.classList.remove('hover');
+            });
+
+            skillsDragArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                skillsDragArea.classList.remove('hover');
+                if (draggedSkill) {
+                    draggedSkill.classList.remove('hidden');
+                    draggedSkill = null;
+                } else {
+                    const skillName = e.dataTransfer.getData('text/plain');
+                    if (skillName && !Array.from(selectedSkillsContainer.children).some(el => el.dataset.skill === skillName)) {
+                         addSkill(skillName);
+                    }
+                }
+            });
+
+            skillsDragArea.addEventListener('dragend', () => {
+                if (draggedSkill) {
+                    draggedSkill.classList.remove('hidden');
+                    draggedSkill = null;
+                }
+            });
+        }
+
+
+        // Job Search Filters Logic
+        function applySearchFilters() {
+            const keyword = document.getElementById('keyword-search').value;
+            const company = document.getElementById('company-search').value;
+            const location = document.getElementById('location-search').value;
+            const jobType = document.getElementById('job-type-filter').value;
+
+            let filteredResults = jobsData.filter(job => {
+                const matchesKeyword = !keyword || 
+                                       job.title.toLowerCase().includes(keyword.toLowerCase()) || 
+                                       job.tags.some(tag => tag.toLowerCase().includes(keyword.toLowerCase()));
+                const matchesCompany = !company || job.company.toLowerCase().includes(company.toLowerCase());
+                const matchesLocation = !location || job.location.toLowerCase().includes(location.toLowerCase());
+                const matchesJobType = jobType === 'all' || job.type === jobType; // Assuming 'type' maps to jobType filter options
+
+                return matchesKeyword && matchesCompany && matchesLocation && matchesJobType;
+            });
+
+            const searchResultsContainer = document.getElementById('search-results');
+            if (filteredResults.length === 0) {
+                searchResultsContainer.innerHTML = `<div class="card p-6 text-center text-gray-500">Tidak ada pekerjaan yang cocok dengan filter Anda.</div>`;
+            } else {
+                searchResultsContainer.innerHTML = filteredResults.map(job => `
+                    <div class="card p-5 group">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="text-2xl h-12 w-12 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">${job.logo}</div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap justify-between items-start gap-2">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer">${job.title}</h3>
+                                        <p class="text-sm text-gray-600">${job.company}</p>
+                                    </div>
+                                    <div class="match-tag px-2.5 py-1 rounded-full text-sm">${job.match}% Cocok</div>
+                                </div>
+                                <div class="text-sm text-gray-500 mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                                    <span>${job.location}</span>
+                                    <span>∙</span>
+                                    <span>${job.salary}</span>
+                                    <span>∙</span>
+                                    <span>${job.posted}</span>
+                                </div>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded flex items-center gap-1">${getCategoryIcon(job.category)} ${tag}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pl-0 sm:pl-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                             <p class="text-sm text-green-700 bg-green-50 p-2 rounded-md">${job.insight}</p>
+                             <div class="flex gap-2 self-end sm:self-center">
+                                <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
+                                <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                searchResultsContainer.querySelectorAll('.btn-primary').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const jobId = event.target.dataset.jobId;
+                        const job = jobsData.find(j => j.id == jobId);
+                        if (job) {
+                            document.getElementById('application-job-title').textContent = job.title;
+                            showSection('job-application-section');
+                            nextApplicationStep(1); // Reset to step 1
+                        }
+                    });
+                });
+            }
+        }
+
+        function clearSearchFilters() {
+            document.getElementById('keyword-search').value = '';
+            document.getElementById('company-search').value = '';
+            document.getElementById('location-search').value = '';
+            document.getElementById('job-type-filter').value = 'all';
+            document.getElementById('search-results').innerHTML = `<div class="card p-6 text-center text-gray-500">Gunakan filter di atas untuk menemukan pekerjaan.</div>`;
+        }
+
+
         document.addEventListener('DOMContentLoaded', () => {
             renderSummaryCards();
             renderJobs();
             renderSkills();
+            renderArticles(); // Render articles on load
 
             const filterButtons = document.querySelectorAll('.filter-btn');
             filterButtons.forEach(button => {
@@ -597,9 +1332,13 @@
                     button.classList.add('btn-primary');
                     button.classList.remove('btn-secondary');
 
+                    currentJobLimit = INITIAL_JOB_LIMIT; // Reset limit when filter changes
                     renderJobs(filter);
                 });
             });
+
+            document.getElementById('show-more-jobs-btn').addEventListener('click', showMoreJobs);
+
 
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', () => {
@@ -607,7 +1346,29 @@
                 });
             });
 
-            showSection('livechat-section'); // Show dashboard by default
+            // Settings page sub-navigation
+            document.querySelectorAll('.settings-nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    showSettingSubSection(item.dataset.settingSection);
+                });
+            });
+
+            // "Update Skills" button on dashboard
+            document.getElementById('update-skills-btn').addEventListener('click', () => {
+                showSection('settings-section');
+                showSettingSubSection('edit-profile-sub'); // Navigate directly to edit profile sub-section
+            });
+
+            // Application form file inputs
+            setupFileUpload('resume-upload', 'resume-file-name');
+            setupFileUpload('cover-letter-upload', 'cover-letter-file-name');
+
+            // Setup skill management
+            setupSkillManagement();
+
+            // Initial section display
+            showSection('dashboard-section');
+            showSettingSubSection('edit-profile-sub'); // Default for settings page
         });
 
     </script>
