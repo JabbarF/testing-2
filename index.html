@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutrals with subtle blues and greens -->
     <!-- Application Structure Plan: Aplikasi ini sekarang menggunakan struktur SPA dengan navigasi bilah atas yang memungkinkan pengguna beralih antar bagian: "Pekerjaan" (Dasbor), "Lamaran" (Pelacak Status Lamaran), "Obrolan Langsung" (Obrolan Dukungan SDM), "Cari Pekerjaan" (Filter Pencarian Pekerjaan). "Profil" (sebelumnya pengaturan) dan ikon "Notifikasi" sekarang menjadi titik masuk terpisah di sisi kanan header, menyederhanakan navigasi utama. Setiap bagian (kecuali Dasbor awal) disembunyikan secara default dan ditampilkan melalui JavaScript saat tautan navigasi yang sesuai diklik. Dasbor mempertahankan tata letak dua kolom responsifnya, dengan bagian ringkasan yang lebih ringkas dan tata letak yang fleksibel secara horizontal. Pelacak Status Lamaran kini menampilkan garis waktu langkah demi langkah yang ditingkatkan dengan tombol tindakan. Obrolan Langsung memiliki tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan diperluas untuk mencakup pengeditan profil terperinci dengan subbagian manajemen keahlian, preferensi notifikasi, dan opsi preferensi bahasa yang baru. Halaman khusus baru untuk Filter Pencarian Pekerjaan dan Notifikasi menyediakan interaksi pengguna yang terfokus. Struktur modular ini mempromosikan navigasi yang intuitif dan pemisahan kekhawatiran yang jelas, meningkatkan kegunaan keseluruhan dengan menyediakan ruang khusus untuk tugas-tugas tertentu. -->
-    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis, kini menggunakan tata letak flexbox yang responsif untuk berjejer horizontal. Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript, mendukung pemfilteran interaktif, menyertakan ikon kategori pekerjaan yang disematkan untuk visual yang menarik, dan tombol "Tampilkan Lainnya" untuk memuat lebih banyak daftar pekerjaan secara bertahap. Analisis Keahlian pada Dasbor dan halaman Perbarui Profil memvisualisasikan tingkat keahlian menggunakan bilah kemajuan HTML/CSS dasar dan manajemen tag interaktif (dengan simulasi penyeretan & pelepasan). Pelacak Status Lamaran menggunakan garis waktu HTML/CSS yang ditingkatkan secara visual dengan langkah-langkah yang berbeda dan tombol tindakan. Obrolan Langsung menggunakan HTML/CSS untuk gelembung obrolan dan tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan menyertakan berbagai input formulir HTML, placeholder unggah file, dan sakelar togol HTML/CSS yang disesuaikan untuk preferensi notifikasi, serta opsi pemilihan bahasa. Halaman Filter Pencarian Pekerjaan yang baru menggunakan bidang input HTML untuk memfilter pekerjaan yang ditampilkan. Halaman Notifikasi menampilkan daftar kartu notifikasi bergaya HTML/CSS. Bagian "Artikel Terkait" baru menampilkan kartu artikel statis bergaya HTML/CSS. Semua elemen interaktif dan visualisasi diimplementasikan menggunakan vanilla JavaScript dan Tailwind CSS, sepenuhnya menghindari pustaka bagan eksternal (Chart.js, Plotly.js), SVG, dan Mermaid JS untuk memastikan aplikasi yang ringan dan berkinerja. -->
+    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis, kini menggunakan tata letak flexbox yang responsif untuk berjejer horizontal. Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript, mendukung pemfilteran interaktif, menyertakan ikon kategori pekerjaan yang disematkan untuk visual yang menarik, dan tombol "Tampilkan Lainnya" untuk memuat lebih banyak daftar pekerjaan secara bertahap. Analisis Keahlian pada Dasbor dan halaman Perbarui Profil memvisualisasikan tingkat keahlian menggunakan bilah kemajuan HTML/CSS dasar dan manajemen tag interaktif (dengan simulasi penyeretan & pelepasan). Pelacak Status Lamaran menggunakan garis waktu HTML/CSS yang ditingkatkan secara visual dengan langkah-langkah yang berbeda dan tombol tindakan. Obrolan Langsung menggunakan HTML/CSS untuk gelembung obrolan dan tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan menyertakan berbagai input formulir HTML, placeholder unggah file, dan sakelar togol HTML/CSS yang disesuaikan untuk preferensi notifikasi, serta opsi pemilihan bahasa. Halaman Filter Pencarian Pekerjaan yang baru menggunakan bidang input HTML untuk memfilter pekerjaan yang ditampilkan, serta menampilkan bagian "Lowongan Terpopuler", "Lowongan Berdasarkan Provinsi", dan "Lowongan Berdasarkan Industri" dengan kartu-kartu contoh. Halaman Notifikasi menampilkan daftar kartu notifikasi bergaya HTML/CSS. Bagian "Artikel Terkait" baru menampilkan kartu artikel statis bergaya HTML/CSS. Semua elemen interaktif dan visualisasi diimplementasikan menggunakan vanilla JavaScript dan Tailwind CSS, sepenuhnya menghindari pustaka bagan eksternal (Chart.js, Plotly.js), SVG, dan Mermaid JS untuk memastikan aplikasi yang ringan dan berkinerja. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -173,10 +173,10 @@
                 <span class="text-2xl font-bold text-gray-900">JobPortal</span>
             </div>
             <nav class="hidden md:flex items-center gap-8">
-                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium active" data-section="dashboard-section">Pekerjaan</button>
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="dashboard-section">Pekerjaan</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="applications-section">Lamaran</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="livechat-section">Obrolan Langsung</button>
-                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="search-filter-section">Cari Pekerjaan</button>
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium active" data-section="search-filter-section">Cari Pekerjaan</button>
             </nav>
             <div class="flex items-center gap-4">
                 <button class="nav-item text-2xl text-gray-600 hover:text-blue-600 p-2 rounded-full" data-section="notifications-section">🔔</button>
@@ -191,7 +191,7 @@
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         
         <!-- Dashboard Section (Pekerjaan) -->
-        <section id="dashboard-section" class="page-section">
+        <section id="dashboard-section" class="page-section hidden">
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
                 <main class="lg:col-span-2 space-y-8">
                     <div>
@@ -682,11 +682,26 @@
         </section>
 
         <!-- Job Search Filters Page (Cari Pekerjaan) -->
-        <section id="search-filter-section" class="page-section hidden">
+        <section id="search-filter-section" class="page-section">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Cari Pekerjaan</h1>
             <p class="mt-1 text-gray-600 mb-8">Temukan pekerjaan yang sempurna untuk Anda menggunakan filter pencarian.</p>
 
             <div class="card p-6 mb-8">
+                <div class="flex flex-col md:flex-row gap-4 mb-6 items-end">
+                    <div class="flex-grow">
+                        <label for="main-keyword-search" class="block text-sm font-medium text-gray-700 mb-1">Pencarian</label>
+                        <input type="text" id="main-keyword-search" placeholder="Posisi atau Perusahaan" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="flex-grow">
+                        <label for="main-location-search" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                        <div class="relative">
+                            <input type="text" id="main-location-search" placeholder="Kota" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
+                        </div>
+                    </div>
+                    <button class="px-6 py-3 font-bold rounded-lg btn-primary md:w-auto w-full" onclick="applyMainSearch()">🔍 Cari</button>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="keyword-search" class="block text-sm font-medium text-gray-700 mb-1">Kata Kunci (Judul, Keahlian)</label>
@@ -697,8 +712,12 @@
                         <input type="text" id="company-search" placeholder="Misalnya: Google, TechCorp" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
-                        <label for="location-search" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
-                        <input type="text" id="location-search" placeholder="Misalnya: Jakarta, Remote, New York" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <label for="min-salary-filter" class="block text-sm font-medium text-gray-700 mb-1">Gaji Minimum (USD)</label>
+                        <input type="number" id="min-salary-filter" placeholder="Misalnya: 50000" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="max-salary-filter" class="block text-sm font-medium text-gray-700 mb-1">Gaji Maksimum (USD)</label>
+                        <input type="number" id="max-salary-filter" placeholder="Misalnya: 150000" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="job-type-filter" class="block text-sm font-medium text-gray-700 mb-1">Tipe Pekerjaan</label>
@@ -714,12 +733,34 @@
                 </div>
                 <div class="flex justify-end mt-6 gap-2">
                     <button class="px-5 py-2 font-bold rounded-lg btn-secondary" onclick="clearSearchFilters()">Bersihkan Filter</button>
-                    <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="applySearchFilters()">Cari Pekerjaan</button>
+                    <button class="px-5 py-2 font-bold rounded-lg btn-primary" onclick="applySearchFilters()">Terapkan Filter</button>
                 </div>
             </div>
 
-            <div id="search-results" class="space-y-4">
-                <div class="card p-6 text-center text-gray-500">Gunakan filter di atas untuk menemukan pekerjaan.</div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center"># LOWONGAN PEKERJAAN PALING BANYAK DICARI #</h2>
+
+            <div class="border-b border-gray-200 mb-6">
+                <div class="flex justify-center -mb-px">
+                    <button class="tab-button py-3 px-6 text-gray-600 font-medium hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 active-tab" data-tab="popular-jobs">Lowongan Terpopuler</button>
+                    <button class="tab-button py-3 px-6 text-gray-600 font-medium hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600" data-tab="province-jobs">Lowongan Berdasarkan Provinsi</button>
+                    <button class="tab-button py-3 px-6 text-gray-600 font-medium hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600" data-tab="industry-jobs">Lowongan Berdasarkan Industri</button>
+                </div>
+            </div>
+
+            <div id="tab-content" class="space-y-4">
+                <div id="popular-jobs" class="tab-pane grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Popular jobs will be rendered here -->
+                </div>
+                <div id="province-jobs" class="tab-pane hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Province jobs will be rendered here -->
+                </div>
+                <div id="industry-jobs" class="tab-pane hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Industry jobs will be rendered here -->
+                </div>
+            </div>
+            
+            <div id="search-results" class="space-y-4 mt-8">
+                <div class="card p-6 text-center text-gray-500">Hasil pencarian akan ditampilkan di sini.</div>
             </div>
         </section>
 
@@ -799,7 +840,7 @@
                 id: 3,
                 title: 'Technical Program Manager',
                 company: 'Innovation Labs',
-                logo: '�',
+                logo: '💡',
                 location: 'Seattle, WA Remote',
                 salary: '$130k-$170k',
                 posted: '3 hari yang lalu',
@@ -885,6 +926,25 @@
             }
         ];
 
+        const popularJobsData = [
+            { id: 101, title: 'Software Engineer', company: 'Google', location: 'Mountain View, CA', logo: '💻', match: 95, category: 'software', salary: '$150k-$200k' },
+            { id: 102, title: 'Marketing Specialist', company: 'Meta', location: 'Remote', logo: '📢', match: 88, category: 'marketing', salary: '$90k-$120k' },
+            { id: 103, title: 'Financial Analyst', company: 'J.P. Morgan', location: 'New York, NY', logo: '💰', match: 92, category: 'finance', salary: '$100k-$130k' }
+        ];
+
+        const provinceJobsData = [
+            { id: 201, title: 'Data Entry Clerk', company: 'PT Maju Terus', location: 'Jakarta, ID', logo: '📝', match: 70, category: 'admin', salary: '$30k-$40k' },
+            { id: 202, title: 'Sales Executive', company: 'Wings Group', location: 'Surabaya, ID', logo: '🤝', match: 80, category: 'sales', salary: '$40k-$60k' },
+            { id: 203, title: 'Factory Worker', company: 'Indofood', location: 'Bandung, ID', logo: '🏭', match: 65, category: 'manufacturing', salary: '$25k-$35k' }
+        ];
+
+        const industryJobsData = [
+            { id: 301, title: 'Game Developer', company: 'Moonton', location: 'Shanghai, CN', logo: '🎮', match: 90, category: 'tech', salary: '$110k-$150k' },
+            { id: 302, title: 'Nurse', company: 'Mitra Keluarga', location: 'Bekasi, ID', logo: '🏥', match: 85, category: 'healthcare', salary: '$50k-$70k' },
+            { id: 303, title: 'Teacher', company: 'Sekolah Cendekia', location: 'Depok, ID', logo: '🧑‍🏫', match: 78, category: 'education', salary: '$45k-$65k' }
+        ];
+
+
         const INITIAL_JOB_LIMIT = 3;
         let currentJobLimit = INITIAL_JOB_LIMIT;
 
@@ -909,9 +969,60 @@
                 case 'design': return '🖌️';
                 case 'management': return '📈';
                 case 'data': return '📊';
+                case 'software': return '💻';
+                case 'marketing': return '📢';
+                case 'finance': return '💰';
+                case 'admin': return '📝';
+                case 'sales': return '🤝';
+                case 'manufacturing': return '🏭';
+                case 'tech': return '🎮';
+                case 'healthcare': return '�';
+                case 'education': return '🧑‍🏫';
                 default: return '💼';
             }
         }
+
+        function createJobCard(job) {
+            return `
+                <div class="card p-5 group">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="text-2xl h-12 w-12 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">${job.logo}</div>
+                        <div class="flex-grow">
+                            <div class="flex flex-wrap justify-between items-start gap-2">
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer">${job.title}</h3>
+                                    <p class="text-sm text-gray-600">${job.company}</p>
+                                </div>
+                                <div class="match-tag px-2.5 py-1 rounded-full text-sm">${job.match}% Cocok</div>
+                            </div>
+                            <div class="text-sm text-gray-500 mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                                <span>${job.location}</span>
+                                <span>∙</span>
+                                <span>${job.salary || 'N/A'}</span>
+                                <span>∙</span>
+                                <span>${job.posted || 'Baru'}</span>
+                            </div>
+                            ${job.tags ? `<div class="mt-3 flex flex-wrap gap-2">
+                                ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded flex items-center gap-1">${getCategoryIcon(job.category)} ${tag}</span>`).join('')}
+                            </div>` : ''}
+                        </div>
+                    </div>
+                    ${job.insight ? `<div class="mt-4 pl-0 sm:pl-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                         <p class="text-sm text-green-700 bg-green-50 p-2 rounded-md">${job.insight}</p>
+                         <div class="flex gap-2 self-end sm:self-center">
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
+                        </div>
+                    </div>` : `<div class="mt-4 pl-0 sm:pl-16 flex justify-end">
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
+                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
+                        </div>
+                    </div>`}
+                </div>
+            `;
+        }
+
 
         function renderJobs(filter = 'all', searchTerm = '') {
             const container = document.getElementById('job-listings');
@@ -927,7 +1038,7 @@
                 filteredJobs = filteredJobs.filter(job => 
                     job.title.toLowerCase().includes(lowerCaseSearchTerm) ||
                     job.company.toLowerCase().includes(lowerCaseSearchTerm) ||
-                    job.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm)) ||
+                    (job.tags && job.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm))) ||
                     job.location.toLowerCase().includes(lowerCaseSearchTerm)
                 );
             }
@@ -940,39 +1051,7 @@
                 return;
             }
 
-            container.innerHTML = jobsToShow.map(job => `
-                <div class="card p-5 group">
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <div class="text-2xl h-12 w-12 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">${job.logo}</div>
-                        <div class="flex-grow">
-                            <div class="flex flex-wrap justify-between items-start gap-2">
-                                <div>
-                                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer">${job.title}</h3>
-                                    <p class="text-sm text-gray-600">${job.company}</p>
-                                </div>
-                                <div class="match-tag px-2.5 py-1 rounded-full text-sm">${job.match}% Cocok</div>
-                            </div>
-                            <div class="text-sm text-gray-500 mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                                <span>${job.location}</span>
-                                <span>∙</span>
-                                <span>${job.salary}</span>
-                                <span>∙</span>
-                                <span>${job.posted}</span>
-                            </div>
-                            <div class="mt-3 flex flex-wrap gap-2">
-                                ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded flex items-center gap-1">${getCategoryIcon(job.category)} ${tag}</span>`).join('')}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 pl-0 sm:pl-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                         <p class="text-sm text-green-700 bg-green-50 p-2 rounded-md">${job.insight}</p>
-                         <div class="flex gap-2 self-end sm:self-center">
-                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
-                            <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+            container.innerHTML = jobsToShow.map(job => createJobCard(job)).join('');
 
             if (currentJobLimit >= filteredJobs.length) {
                 showMoreBtn.classList.add('hidden');
@@ -1233,83 +1312,110 @@
             });
         }
 
+        // Helper to parse salary string into min/max numbers
+        function parseSalaryRange(salaryString) {
+            if (!salaryString || salaryString === 'N/A') {
+                return { min: 0, max: Infinity }; // Treat N/A as no salary filter
+            }
+            const cleanString = salaryString.replace(/[$,k]/g, ''); // Remove $, k
+            const parts = cleanString.split('-');
+            let min = parseFloat(parts[0]) * 1000;
+            let max = parts.length > 1 ? parseFloat(parts[1]) * 1000 : min;
+            return { min, max };
+        }
 
         // Job Search Filters Logic
+        function applyMainSearch() {
+            const keyword = document.getElementById('main-keyword-search').value;
+            const location = document.getElementById('main-location-search').value;
+            // For now, we'll just populate the advanced filters and apply
+            document.getElementById('keyword-search').value = keyword;
+            document.getElementById('location-search').value = location;
+            applySearchFilters();
+        }
+
         function applySearchFilters() {
             const keyword = document.getElementById('keyword-search').value;
             const company = document.getElementById('company-search').value;
             const location = document.getElementById('location-search').value;
+            const minSalaryInput = document.getElementById('min-salary-filter').value;
+            const maxSalaryInput = document.getElementById('max-salary-filter').value;
             const jobType = document.getElementById('job-type-filter').value;
+
+            const filterMinSalary = minSalaryInput ? parseFloat(minSalaryInput) : 0;
+            const filterMaxSalary = maxSalaryInput ? parseFloat(maxSalaryInput) : Infinity;
+
 
             let filteredResults = jobsData.filter(job => {
                 const matchesKeyword = !keyword || 
                                        job.title.toLowerCase().includes(keyword.toLowerCase()) || 
-                                       job.tags.some(tag => tag.toLowerCase().includes(keyword.toLowerCase()));
+                                       job.company.toLowerCase().includes(keyword.toLowerCase()) || // Include company in keyword search
+                                       (job.tags && job.tags.some(tag => tag.toLowerCase().includes(keyword.toLowerCase())));
                 const matchesCompany = !company || job.company.toLowerCase().includes(company.toLowerCase());
                 const matchesLocation = !location || job.location.toLowerCase().includes(location.toLowerCase());
                 const matchesJobType = jobType === 'all' || job.type === jobType; // Assuming 'type' maps to jobType filter options
+                
+                const jobSalaryRange = parseSalaryRange(job.salary);
+                const matchesSalary = (jobSalaryRange.max >= filterMinSalary && jobSalaryRange.min <= filterMaxSalary);
 
-                return matchesKeyword && matchesCompany && matchesLocation && matchesJobType;
+                return matchesKeyword && matchesCompany && matchesLocation && matchesJobType && matchesSalary;
             });
 
             const searchResultsContainer = document.getElementById('search-results');
             if (filteredResults.length === 0) {
                 searchResultsContainer.innerHTML = `<div class="card p-6 text-center text-gray-500">Tidak ada pekerjaan yang cocok dengan filter Anda.</div>`;
             } else {
-                searchResultsContainer.innerHTML = filteredResults.map(job => `
-                    <div class="card p-5 group">
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <div class="text-2xl h-12 w-12 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">${job.logo}</div>
-                            <div class="flex-grow">
-                                <div class="flex flex-wrap justify-between items-start gap-2">
-                                    <div>
-                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer">${job.title}</h3>
-                                        <p class="text-sm text-gray-600">${job.company}</p>
-                                    </div>
-                                    <div class="match-tag px-2.5 py-1 rounded-full text-sm">${job.match}% Cocok</div>
-                                </div>
-                                <div class="text-sm text-gray-500 mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                                    <span>${job.location}</span>
-                                    <span>∙</span>
-                                    <span>${job.salary}</span>
-                                    <span>∙</span>
-                                    <span>${job.posted}</span>
-                                </div>
-                                <div class="mt-3 flex flex-wrap gap-2">
-                                    ${job.tags.map(tag => `<span class="tag px-2 py-1 rounded flex items-center gap-1">${getCategoryIcon(job.category)} ${tag}</span>`).join('')}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 pl-0 sm:pl-16 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                             <p class="text-sm text-green-700 bg-green-50 p-2 rounded-md">${job.insight}</p>
-                             <div class="flex gap-2 self-end sm:self-center">
-                                <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-secondary group-hover:scale-105 transition-transform">Simpan</button>
-                                <button class="px-4 py-2 text-sm font-semibold rounded-lg btn-primary group-hover:scale-105 transition-transform" data-job-id="${job.id}">Lamar</button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-
-                searchResultsContainer.querySelectorAll('.btn-primary').forEach(button => {
-                    button.addEventListener('click', (event) => {
-                        const jobId = event.target.dataset.jobId;
-                        const job = jobsData.find(j => j.id == jobId);
-                        if (job) {
-                            document.getElementById('application-job-title').textContent = job.title;
-                            showSection('job-application-section');
-                            nextApplicationStep(1); // Reset to step 1
-                        }
-                    });
-                });
+                searchResultsContainer.innerHTML = filteredResults.map(job => createJobCard(job)).join('');
             }
         }
 
         function clearSearchFilters() {
+            document.getElementById('main-keyword-search').value = '';
+            document.getElementById('main-location-search').value = '';
             document.getElementById('keyword-search').value = '';
             document.getElementById('company-search').value = '';
             document.getElementById('location-search').value = '';
+            document.getElementById('min-salary-filter').value = '';
+            document.getElementById('max-salary-filter').value = '';
             document.getElementById('job-type-filter').value = 'all';
             document.getElementById('search-results').innerHTML = `<div class="card p-6 text-center text-gray-500">Gunakan filter di atas untuk menemukan pekerjaan.</div>`;
+        }
+
+        function renderTabContent(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active-tab'));
+            document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active-tab');
+            
+            // Render content based on tabId
+            const container = document.getElementById(tabId);
+            let dataToRender = [];
+            switch(tabId) {
+                case 'popular-jobs':
+                    dataToRender = popularJobsData;
+                    break;
+                case 'province-jobs':
+                    dataToRender = provinceJobsData;
+                    break;
+                case 'industry-jobs':
+                    dataToRender = industryJobsData;
+                    break;
+            }
+            container.innerHTML = dataToRender.map(job => createJobCard(job)).join('');
+
+            // Add Lamar button event listeners for these jobs
+            container.querySelectorAll('.btn-primary').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const jobId = event.target.dataset.jobId;
+                    const job = dataToRender.find(j => j.id == jobId); // Find job from the current tab's data
+                    if (job) {
+                        document.getElementById('application-job-title').textContent = job.title;
+                        showSection('job-application-section');
+                        nextApplicationStep(1); // Reset to step 1
+                    }
+                });
+            });
         }
 
 
@@ -1366,9 +1472,18 @@
             // Setup skill management
             setupSkillManagement();
 
-            // Initial section display: Show settings-section (Profile) by default
-            showSection('settings-section');
-            showSettingSubSection('edit-profile-sub'); // Ensure Edit Profile sub-section is also shown
+            // Tab functionality for search page
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    renderTabContent(button.dataset.tab);
+                });
+            });
+
+
+            // Initial section display: Show search-filter-section by default
+            showSection('search-filter-section');
+            renderTabContent('popular-jobs'); // Render default tab content for search page
+            showSettingSubSection('edit-profile-sub'); // Default for settings page if accessed later
         });
 
     </script>
