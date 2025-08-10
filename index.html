@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutrals with subtle blues and greens -->
-    <!-- Application Structure Plan: Aplikasi ini sekarang menggunakan struktur SPA dengan navigasi bilah atas yang memungkinkan pengguna beralih antar bagian: "Pekerjaan" (Dasbor), "Lamaran" (Pelacak Status Lamaran), "Obrolan Langsung" (Obrolan Dukungan SDM), "Cari Pekerjaan" (Filter Pencarian Pekerjaan). "Profil" (sebelumnya pengaturan) dan ikon "Notifikasi" sekarang menjadi titik masuk terpisah di sisi kanan header, menyederhanakan navigasi utama. Setiap bagian (kecuali Dasbor awal) disembunyikan secara default dan ditampilkan melalui JavaScript saat tautan navigasi yang sesuai diklik. Dasbor mempertahankan tata letak dua kolom responsifnya, dengan bagian ringkasan yang lebih ringkas dan tata letak yang fleksibel secara horizontal. Pelacak Status Lamaran kini menampilkan garis waktu langkah demi langkah yang ditingkatkan dengan tombol tindakan. Obrolan Langsung memiliki tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan diperluas untuk mencakup pengeditan profil terperinci dengan subbagian manajemen keahlian, preferensi notifikasi, dan opsi preferensi bahasa yang baru. Halaman khusus baru untuk Filter Pencarian Pekerjaan dan Notifikasi menyediakan interaksi pengguna yang terfokus. Struktur modular ini mempromosikan navigasi yang intuitif dan pemisahan kekhawatiran yang jelas, meningkatkan kegunaan keseluruhan dengan menyediakan ruang khusus untuk tugas-tugas tertentu. -->
-    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis, kini menggunakan tata letak flexbox yang responsif untuk berjejer horizontal. Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript, mendukung pemfilteran interaktif, menyertakan ikon kategori pekerjaan yang disematkan untuk visual yang menarik, dan tombol "Tampilkan Lainnya" untuk memuat lebih banyak daftar pekerjaan secara bertahap. Analisis Keahlian pada Dasbor dan halaman Perbarui Profil memvisualisasikan tingkat keahlian menggunakan bilah kemajuan HTML/CSS dasar dan manajemen tag interaktif (dengan simulasi penyeretan & pelepasan). Pelacak Status Lamaran menggunakan garis waktu HTML/CSS yang ditingkatkan secara visual dengan langkah-langkah yang berbeda dan tombol tindakan. Obrolan Langsung menggunakan HTML/CSS untuk gelembung obrolan dan tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan menyertakan berbagai input formulir HTML, placeholder unggah file, dan sakelar togol HTML/CSS yang disesuaikan untuk preferensi notifikasi, serta opsi pemilihan bahasa. Halaman Filter Pencarian Pekerjaan yang baru menggunakan bidang input HTML untuk memfilter pekerjaan yang ditampilkan, serta menampilkan bagian "Lowongan Terpopuler", "Lowongan Berdasarkan Provinsi", dan "Lowongan Berdasarkan Industri" dengan kartu-kartu contoh. Halaman Notifikasi menampilkan daftar kartu notifikasi bergaya HTML/CSS. Bagian "Artikel Terkait" baru menampilkan kartu artikel statis bergaya HTML/CSS. Semua elemen interaktif dan visualisasi diimplementasikan menggunakan vanilla JavaScript dan Tailwind CSS, sepenuhnya menghindari pustaka bagan eksternal (Chart.js, Plotly.js), SVG, dan Mermaid JS untuk memastikan aplikasi yang ringan dan berkinerja. -->
+    <!-- Application Structure Plan: Aplikasi ini sekarang menggunakan struktur SPA dengan navigasi bilah atas yang memungkinkan pengguna beralih antar bagian. Halaman "Pekerjaan" (Dasbor) kini menjadi halaman default dan telah diperkaya dengan bilah pencarian utama, kategori pekerjaan, pekerjaan terbaru, perusahaan terkemuka, dan bagian fitur unggulan, memberikan pengalaman yang lebih mirip portal pekerjaan modern. Halaman "Analisis Keahlian Anda" telah dipindahkan ke dalam kolom utama dasbor, sebelum bagian kategori, untuk visibilitas yang lebih baik. Halaman "Profil" dan ikon "Notifikasi" tetap menjadi titik masuk terpisah di sisi kanan header, dengan tambahan pemilih bahasa baru di samping notifikasi, dan ikon "Tersimpan" di navigasi utama. Setiap bagian (kecuali Dasbor awal) disembunyikan secara default dan ditampilkan melalui JavaScript saat tautan navigasi yang sesuai diklik. Dasbor mempertahankan tata letak dua kolom responsifnya, dengan bagian ringkasan yang lebih ringkas dan tata letak yang fleksibel secara horizontal. Pelacak Status Lamaran kini menampilkan garis waktu langkah demi langkah yang ditingkatkan dengan tombol tindakan. Obrolan Langsung memiliki tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan diperluas untuk mencakup pengeditan profil terperinci dengan subbagian manajemen keahlian, preferensi notifikasi, dan opsi preferensi bahasa yang baru. Halaman khusus baru untuk Filter Pencarian Pekerjaan dan Notifikasi menyediakan interaksi pengguna yang terfokus. Struktur modular ini mempromosikan navigasi yang intuitif dan pemisahan kekhawatiran yang jelas, meningkatkan kegunaan keseluruhan dengan menyediakan ruang khusus untuk tugas-tugas tertentu. -->
+    <!-- Visualization & Content Choices: Metrik kunci pada Dasbor disajikan sebagai kartu statis, kini menggunakan tata letak flexbox yang responsif untuk berjejer horizontal. Rekomendasi pekerjaan dirender secara dinamis dari array JavaScript, mendukung pemfilteran interaktif, menyertakan ikon kategori pekerjaan yang disematkan untuk visual yang menarik, dan tombol "Tampilkan Lainnya" untuk memuat lebih banyak daftar pekerjaan secara bertahap. Analisis Keahlian pada Dasbor dan halaman Perbarui Profil memvisualisasikan tingkat keahlian menggunakan bilah kemajuan HTML/CSS dasar dan manajemen tag interaktif (dengan simulasi penyeretan & pelepasan). Pelacak Status Lamaran menggunakan garis waktu HTML/CSS yang ditingkatkan secara visual dengan langkah-langkah yang berbeda dan tombol tindakan. Obrolan Langsung menggunakan HTML/CSS untuk gelembung obrolan dan tata letak dua kolom untuk daftar obrolan dan tampilan percakapan. Halaman Pengaturan menyertakan berbagai input formulir HTML, placeholder unggah file, dan sakelar togol HTML/CSS yang disesuaikan untuk preferensi notifikasi, serta opsi pemilihan bahasa. Halaman Filter Pencarian Pekerjaan yang baru menggunakan bidang input HTML untuk memfilter pekerjaan yang ditampilkan, serta menampilkan bagian "Lowongan Terpopuler", "Lowongan Berdasarkan Provinsi", dan "Lowongan Berdasarkan Industri" dengan kartu-kartu contoh. Halaman Notifikasi menampilkan daftar kartu notifikasi bergaya HTML/CSS. Bagian "Artikel Terkait" baru menampilkan kartu artikel statis bergaya HTML/CSS. Bagian baru di Dasbor seperti "Jelajahi Berdasarkan Kategori", "Pekerjaan Terbaru", "Perusahaan Terkemuka", dan "Mengapa Memilih JobPortal?" menggunakan kartu HTML/CSS dan tata letak grid/flexbox untuk presentasi visual yang menarik. Semua elemen interaktif dan visualisasi diimplementasikan menggunakan vanilla JavaScript dan Tailwind CSS, sepenuhnya menghindari pustaka bagan eksternal (Chart.js, Plotly.js), SVG, dan Mermaid JS untuk memastikan aplikasi yang ringan dan berkinerja. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -167,35 +167,63 @@
 <body class="text-gray-800">
 
     <header class="bg-white shadow-sm py-4">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="text-3xl">🔗</span>
-                <span class="text-2xl font-bold text-gray-900">JobPortal</span>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
+            <!-- Top Row of Header -->
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-3xl">🔗</span>
+                    <span class="text-2xl font-bold text-gray-900">JobPortal</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative group">
+                        <button class="nav-item text-gray-600 hover:text-blue-600 p-2 rounded-full flex items-center gap-1">
+                            🌐 <span class="font-medium">ID</span> <span class="text-sm">▼</span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block z-10">
+                            <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bahasa Indonesia</button>
+                            <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</button>
+                        </div>
+                    </div>
+                    <button class="nav-item text-2xl text-gray-600 hover:text-blue-600 p-2 rounded-full" data-section="notifications-section">🔔</button>
+                    <button class="nav-item flex flex-col items-center cursor-pointer p-2 rounded-full hover:bg-gray-100" data-section="settings-section">
+                        <img src="https://placehold.co/32x32/cccccc/white?text=👨‍💻" alt="Profile" class="rounded-full w-8 h-8 mb-1">
+                        <span class="text-gray-700 text-xs font-medium">Profil</span>
+                    </button>
+                </div>
             </div>
-            <nav class="hidden md:flex items-center gap-8">
-                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="dashboard-section">Pekerjaan</button>
+            <!-- Bottom Row of Header (Main Navigation) -->
+            <nav class="hidden md:flex items-center gap-8 border-t pt-2 mt-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium active" data-section="dashboard-section">Pekerjaan</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="applications-section">Lamaran</button>
                 <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="livechat-section">Obrolan Langsung</button>
-                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium active" data-section="search-filter-section">Cari Pekerjaan</button>
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="search-filter-section">Cari Pekerjaan</button>
+                <button class="nav-item text-gray-600 hover:text-blue-600 py-2 font-medium" data-section="saved-jobs-section">🔖 Tersimpan</button>
             </nav>
-            <div class="flex items-center gap-4">
-                <button class="nav-item text-2xl text-gray-600 hover:text-blue-600 p-2 rounded-full" data-section="notifications-section">🔔</button>
-                <button class="nav-item flex items-center gap-2 cursor-pointer p-2 rounded-full hover:bg-gray-100" data-section="settings-section">
-                    <img src="https://placehold.co/32x32/cccccc/white?text=👨‍💻" alt="Profile" class="rounded-full w-8 h-8">
-                    <span class="text-gray-700 font-medium hidden sm:block">Profil</span>
-                </button>
-            </div>
         </div>
     </header>
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         
         <!-- Dashboard Section (Pekerjaan) -->
-        <section id="dashboard-section" class="page-section hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
-                <main class="lg:col-span-2 space-y-8">
+        <section id="dashboard-section" class="page-section">
+            <div class="grid grid-cols-1 gap-8"> <!-- Adjusted to single column for main content -->
+                <main class="col-span-1 space-y-8"> <!-- Main content now spans full width -->
+                    <!-- Hero Section with Main Search Bar -->
+                    <section class="bg-blue-500 text-white p-8 rounded-lg shadow-md">
+                        <h1 class="text-4xl font-bold mb-4">Temukan Pekerjaan Impian Anda</h1>
+                        <p class="text-lg mb-6">Jelajahi ribuan lowongan dari perusahaan terbaik di seluruh dunia.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="text" id="dashboard-main-keyword-search" placeholder="Posisi, Perusahaan, atau Kata Kunci" class="flex-grow p-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <div class="relative flex-grow">
+                                <input type="text" id="dashboard-main-location-search" placeholder="Kota atau Lokasi" class="w-full p-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300 pl-10">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
+                            </div>
+                            <button class="px-6 py-3 font-bold rounded-lg bg-orange-500 hover:bg-orange-600 transition-colors" onclick="applyDashboardMainSearch()">🔍 Cari</button>
+                        </div>
+                    </section>
+
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">Selamat datang kembali, John!</h1>
+                        <h2 class="text-3xl font-bold text-gray-900">Selamat datang kembali, John!</h2>
                         <p class="mt-1 text-gray-600">Berdasarkan keahlian dan jejak karier Anda, kami telah menemukan peluang pertumbuhan yang menarik untuk Anda.</p>
                     </div>
 
@@ -205,11 +233,49 @@
                         </div>
                     </section>
                     
+                    <!-- Analisis Keahlian Anda (Relocated to main content flow) -->
+                    <section class="card p-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">📊</span>
+                            <h3 class="text-xl font-bold text-gray-900">Analisis Keahlian Anda</h3>
+                        </div>
+                        <p class="text-gray-600 mt-2 mb-6">Berdasarkan CV Anda, kami telah menganalisis keahlian Anda secara keseluruhan.</p>
+                        
+                        <div id="skills-analysis" class="space-y-5">
+                        </div>
+
+                        <button id="update-skills-btn" class="w-full mt-6 px-4 py-3 font-bold rounded-lg btn-primary transition-transform duration-200 hover:scale-105">
+                            Perbarui Keahlian
+                        </button>
+                    </section>
+
+                    <!-- Jelajahi Berdasarkan Kategori -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Jelajahi Berdasarkan Kategori</h2>
+                        <p class="text-gray-600 mb-6">Temukan pekerjaan yang sesuai dengan minat dan keahlian Anda.</p>
+                        <div id="job-categories" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <!-- Categories will be rendered here by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Pekerjaan Terbaru -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Pekerjaan Terbaru</h2>
+                        <p class="text-gray-600 mb-6">Lowongan pekerjaan yang baru ditambahkan di JobPortal.</p>
+                        <div id="latest-job-listings" class="space-y-4">
+                            <!-- Latest jobs will be rendered here by JavaScript -->
+                        </div>
+                        <div class="text-center mt-6">
+                            <button class="px-6 py-3 font-bold rounded-lg btn-secondary">Lihat Semua Pekerjaan Terbaru</button>
+                        </div>
+                    </section>
+                    
+                    <!-- Rekomendasi Pekerjaan -->
                     <section>
                         <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
                             <div>
-                                <h2 class="text-2xl font-bold text-gray-900">Rekomendasi Pekerjaan Cerdas</h2>
-                                <p class="text-gray-600">Pekerjaan yang disesuaikan untuk mempercepat pertumbuhan karier Anda.</p>
+                                <h2 class="text-2xl font-bold text-gray-900">Rekomendasi Pekerjaan</h2>
+                                <p class="text-gray-600">Rekomendasi didasarkan pada CV dan kecocokan skill serta minat yang dimiliki.</p>
                             </div>
                             <div class="flex items-center gap-2 flex-wrap" id="filter-buttons">
                                 <button data-filter="next-level" class="filter-btn px-4 py-2 text-sm font-semibold rounded-lg btn-secondary">Jenjang Berikutnya</button>
@@ -224,6 +290,24 @@
                         </div>
                     </section>
 
+                    <!-- Perusahaan Terkemuka -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Perusahaan Terkemuka</h2>
+                        <p class="text-gray-600 mb-6">Temukan peluang di perusahaan-perusahaan terkemuka.</p>
+                        <div id="top-companies" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <!-- Top companies will be rendered here by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Mengapa Memilih JobPortal? -->
+                    <section class="bg-blue-100 p-8 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-bold text-blue-800 mb-4">Mengapa Memilih JobPortal?</h2>
+                        <p class="text-blue-700 mb-6">Kami berkomitmen untuk membantu Anda mencapai tujuan karier Anda.</p>
+                        <div id="why-choose-us" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Features will be rendered here by JavaScript -->
+                        </div>
+                    </section>
+
                     <section id="related-articles-section">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Artikel Terkait</h2>
                         <p class="text-gray-600 mb-6">Jelajahi artikel tentang tren industri, pengembangan karier, dan keahlian.</p>
@@ -232,23 +316,6 @@
                         </div>
                     </section>
                 </main>
-
-                <aside class="mt-8 lg:mt-0">
-                    <div class="card p-6 sticky top-8">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">📊</span>
-                            <h3 class="text-xl font-bold text-gray-900">Analisis Keahlian Anda</h3>
-                        </div>
-                        <p class="text-gray-600 mt-2 mb-6">Berdasarkan CV Anda, kami telah menganalisis keahlian Anda secara keseluruhan.</p>
-                        
-                        <div id="skills-analysis" class="space-y-5">
-                        </div>
-
-                        <button id="update-skills-btn" class="w-full mt-6 px-4 py-3 font-bold rounded-lg btn-primary transition-transform duration-200 hover:scale-105">
-                            Perbarui Keahlian
-                        </button>
-                    </div>
-                </aside>
             </div>
         </section>
 
@@ -682,7 +749,7 @@
         </section>
 
         <!-- Job Search Filters Page (Cari Pekerjaan) -->
-        <section id="search-filter-section" class="page-section">
+        <section id="search-filter-section" class="page-section hidden">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Cari Pekerjaan</h1>
             <p class="mt-1 text-gray-600 mb-8">Temukan pekerjaan yang sempurna untuk Anda menggunakan filter pencarian.</p>
 
@@ -695,7 +762,7 @@
                     <div class="flex-grow">
                         <label for="main-location-search" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
                         <div class="relative">
-                            <input type="text" id="main-location-search" placeholder="Kota" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10">
+                            <input type="text" id="main-location-search" placeholder="Kota" class="w-full p-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300 pl-10">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
                         </div>
                     </div>
@@ -764,6 +831,15 @@
             </div>
         </section>
 
+        <!-- Saved Jobs Section -->
+        <section id="saved-jobs-section" class="page-section hidden">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Pekerjaan Tersimpan</h1>
+            <p class="mt-1 text-gray-600 mb-8">Kelola lowongan pekerjaan yang telah Anda simpan.</p>
+            <div id="saved-job-listings" class="space-y-4">
+                <div class="card p-6 text-center text-gray-500">Tidak ada pekerjaan yang disimpan.</div>
+            </div>
+        </section>
+
         <!-- Notifications Page -->
         <section id="notifications-section" class="page-section hidden">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Notifikasi</h1>
@@ -807,7 +883,37 @@
             { icon: '📄', label: 'Lamaran', value: '12' }
         ];
 
-        const jobsData = [
+        const jobCategoriesData = [
+            { icon: '💻', name: 'IT & Software', count: '120k+ Pekerjaan' },
+            { icon: '📊', name: 'Data Science', count: '80k+ Pekerjaan' },
+            { icon: '🎨', name: 'Desain Kreatif', count: '50k+ Pekerjaan' },
+            { icon: '📈', name: 'Pemasaran & Penjualan', count: '70k+ Pekerjaan' },
+            { icon: '💰', name: 'Keuangan', count: '60k+ Pekerjaan' },
+            { icon: '🧑‍💼', name: 'Sumber Daya Manusia', count: '30k+ Pekerjaan' },
+            { icon: '🏥', name: 'Kesehatan', count: '40k+ Pekerjaan' },
+            { icon: '🏭', name: 'Manufaktur', count: '25k+ Pekerjaan' }
+        ];
+
+        const topCompaniesData = [
+            { logo: 'G', name: 'Google' },
+            { logo: 'M', name: 'Meta' },
+            { logo: 'A', name: 'Amazon' },
+            { logo: 'N', name: 'Netflix' },
+            { logo: 'MS', name: 'Microsoft' },
+            { logo: 'TS', name: 'Tesla' },
+            { logo: 'AP', name: 'Apple' },
+            { logo: 'OR', name: 'Oracle' }
+        ];
+
+        const whyChooseUsData = [
+            { icon: '✨', title: 'Rekomendasi AI Cerdas', description: 'Dapatkan rekomendasi pekerjaan yang sangat personal berdasarkan keahlian dan riwayat Anda.' },
+            { icon: '💬', title: 'Dukungan Obrolan Langsung', description: 'Hubungi perekrut secara langsung dan dapatkan jawaban instan untuk pertanyaan Anda.' },
+            { icon: '🚀', title: 'Pelacak Lamaran Komprehensif', description: 'Pantau setiap tahap lamaran pekerjaan Anda dengan pelacak yang mudah digunakan.' },
+            { icon: '📚', title: 'Sumber Daya Karier Eksklusif', description: 'Akses artikel, kiat wawancara, dan panduan industri untuk kemajuan karier Anda.' }
+        ];
+
+        // Differentiated job data
+        const recommendedJobsData = [
             {
                 id: 1,
                 title: 'Senior Product Manager',
@@ -849,7 +955,10 @@
                 insight: '⚡️ Potensi pertumbuhan tinggi: Fokus teknologi baru',
                 type: 'next-level',
                 category: 'management'
-            },
+            }
+        ];
+
+        const latestJobsData = [
             {
                 id: 4,
                 title: 'Data Scientist',
@@ -858,7 +967,7 @@
                 location: 'Austin, TX',
                 salary: '$110k-$140k',
                 posted: '5 hari yang lalu',
-                match: 85,
+                match: 75, // Lower match for "latest"
                 tags: ['Machine Learning', 'Python', 'SQL'],
                 insight: '↔️ Perluasan keahlian: Kesempatan di bidang AI generatif',
                 type: 'similar',
@@ -872,7 +981,7 @@
                 location: 'Remote',
                 salary: '$130k-$160k',
                 posted: '4 hari yang lalu',
-                match: 89,
+                match: 70, // Lower match
                 tags: ['Cloud Computing', 'CI/CD', 'Kubernetes'],
                 insight: '🚀 Jalur karier yang berkembang pesat di infrastruktur',
                 type: 'next-level',
@@ -886,13 +995,14 @@
                 location: 'Los Angeles, CA',
                 salary: '$90k-$110k',
                 posted: '1 hari yang lalu',
-                match: 75,
+                match: 65, // Lower match
                 tags: ['Content Marketing', 'SEO', 'Copywriting'],
                 insight: '💡 Tingkatkan pengaruh merek Anda dengan peran baru ini',
                 type: 'similar',
                 category: 'product'
             }
         ];
+
 
         const skillsData = [
             { name: 'Product Management', level: 5, maxLevel: 5, levelName: 'Pakar' },
@@ -976,8 +1086,11 @@
                 case 'sales': return '🤝';
                 case 'manufacturing': return '🏭';
                 case 'tech': return '🎮';
-                case 'healthcare': return '�';
+                case 'healthcare': return '🏥';
                 case 'education': return '🧑‍🏫';
+                case 'it': return '🖥️';
+                case 'creative': return '💡';
+                case 'hr': return '👥';
                 default: return '💼';
             }
         }
@@ -1024,10 +1137,10 @@
         }
 
 
-        function renderJobs(filter = 'all', searchTerm = '') {
+        function renderRecommendedJobs(filter = 'all', searchTerm = '') {
             const container = document.getElementById('job-listings');
             const showMoreBtn = document.getElementById('show-more-jobs-btn');
-            let filteredJobs = jobsData;
+            let filteredJobs = recommendedJobsData; // Use recommendedJobsData here
 
             if (filter !== 'all') {
                 filteredJobs = filteredJobs.filter(job => job.type === filter);
@@ -1047,22 +1160,24 @@
 
             if (jobsToShow.length === 0) {
                 container.innerHTML = `<div class="card p-6 text-center text-gray-500">Tidak ada pekerjaan yang cocok dengan filter ini.</div>`;
-                showMoreBtn.classList.add('hidden');
+                if (showMoreBtn) showMoreBtn.classList.add('hidden');
                 return;
             }
 
             container.innerHTML = jobsToShow.map(job => createJobCard(job)).join('');
 
-            if (currentJobLimit >= filteredJobs.length) {
-                showMoreBtn.classList.add('hidden');
-            } else {
-                showMoreBtn.classList.remove('hidden');
+            if (showMoreBtn) {
+                if (currentJobLimit >= filteredJobs.length) {
+                    showMoreBtn.classList.add('hidden');
+                } else {
+                    showMoreBtn.classList.remove('hidden');
+                }
             }
 
-            document.querySelectorAll('#job-listings .btn-primary').forEach(button => {
+            container.querySelectorAll('.btn-primary').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const jobId = event.target.dataset.jobId;
-                    const job = jobsData.find(j => j.id == jobId);
+                    const job = recommendedJobsData.find(j => j.id == jobId); // Find from recommended data
                     if (job) {
                         document.getElementById('application-job-title').textContent = job.title;
                         showSection('job-application-section');
@@ -1074,7 +1189,58 @@
 
         function showMoreJobs() {
             currentJobLimit += 3; // Load 3 more jobs
-            renderJobs();
+            renderRecommendedJobs();
+        }
+
+        function renderJobCategories() {
+            const container = document.getElementById('job-categories');
+            container.innerHTML = jobCategoriesData.map(category => `
+                <div class="card p-4 flex flex-col items-center text-center hover:bg-blue-50 cursor-pointer">
+                    <span class="text-4xl mb-2">${category.icon}</span>
+                    <h3 class="font-semibold text-gray-900">${category.name}</h3>
+                    <p class="text-sm text-gray-600">${category.count}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderLatestJobs() {
+            const container = document.getElementById('latest-job-listings');
+            container.innerHTML = latestJobsData.map(job => createJobCard(job)).join('');
+
+            container.querySelectorAll('.btn-primary').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const jobId = event.target.dataset.jobId;
+                    const job = latestJobsData.find(j => j.id == jobId); // Find from latest data
+                    if (job) {
+                        document.getElementById('application-job-title').textContent = job.title;
+                        showSection('job-application-section');
+                        nextApplicationStep(1); // Reset to step 1
+                    }
+                });
+            });
+        }
+
+        function renderTopCompanies() {
+            const container = document.getElementById('top-companies');
+            container.innerHTML = topCompaniesData.map(company => `
+                <div class="card p-4 flex flex-col items-center text-center hover:bg-gray-50 cursor-pointer">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-2xl font-bold text-gray-700 mb-2">${company.logo}</div>
+                    <h3 class="font-semibold text-gray-900">${company.name}</h3>
+                </div>
+            `).join('');
+        }
+
+        function renderWhyChooseUs() {
+            const container = document.getElementById('why-choose-us');
+            container.innerHTML = whyChooseUsData.map(feature => `
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start gap-4">
+                    <span class="text-3xl flex-shrink-0">${feature.icon}</span>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-1">${feature.title}</h3>
+                        <p class="text-gray-600 text-sm">${feature.description}</p>
+                    </div>
+                </div>
+            `).join('');
         }
 
 
@@ -1324,6 +1490,19 @@
             return { min, max };
         }
 
+        // Dashboard Main Search
+        function applyDashboardMainSearch() {
+            const keyword = document.getElementById('dashboard-main-keyword-search').value;
+            const location = document.getElementById('dashboard-main-location-search').value;
+            
+            // Navigate to search page and apply filters
+            document.getElementById('main-keyword-search').value = keyword;
+            document.getElementById('main-location-search').value = location;
+            showSection('search-filter-section');
+            applySearchFilters(); // Apply filters on the search page
+        }
+
+
         // Job Search Filters Logic
         function applyMainSearch() {
             const keyword = document.getElementById('main-keyword-search').value;
@@ -1346,7 +1525,7 @@
             const filterMaxSalary = maxSalaryInput ? parseFloat(maxSalaryInput) : Infinity;
 
 
-            let filteredResults = jobsData.filter(job => {
+            let filteredResults = [...recommendedJobsData, ...latestJobsData].filter(job => { // Filter from all jobs
                 const matchesKeyword = !keyword || 
                                        job.title.toLowerCase().includes(keyword.toLowerCase()) || 
                                        job.company.toLowerCase().includes(keyword.toLowerCase()) || // Include company in keyword search
@@ -1421,9 +1600,13 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderSummaryCards();
-            renderJobs();
-            renderSkills();
+            renderJobCategories();
+            renderLatestJobs(); // Render latest jobs
+            renderRecommendedJobs(); // Render intelligent recommendations
+            renderTopCompanies();
+            renderWhyChooseUs();
             renderArticles(); // Render articles on load
+            renderSkills(); // Render skills analysis in dashboard
 
             const filterButtons = document.querySelectorAll('.filter-btn');
             filterButtons.forEach(button => {
@@ -1439,7 +1622,7 @@
                     button.classList.remove('btn-secondary');
 
                     currentJobLimit = INITIAL_JOB_LIMIT; // Reset limit when filter changes
-                    renderJobs(filter);
+                    renderRecommendedJobs(filter); // Filter recommended jobs
                 });
             });
 
@@ -1480,12 +1663,12 @@
             });
 
 
-            // Initial section display: Show search-filter-section by default
-            showSection('search-filter-section');
-            renderTabContent('popular-jobs'); // Render default tab content for search page
+            // Initial section display: Show dashboard-section by default
+            showSection('dashboard-section');
+            renderTabContent('popular-jobs'); // Render default tab content for search page if accessed later
             showSettingSubSection('edit-profile-sub'); // Default for settings page if accessed later
         });
 
     </script>
 </body>
-</html>
+</html
